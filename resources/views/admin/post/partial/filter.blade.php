@@ -1,4 +1,4 @@
-<div class="btn-group postbuffer-post">
+<div class="btn-group channels-post">
     <button class="btn btn-xs btn-danger btn-search" type="button">
         <i aria-hidden="true" class="fa fa-search">
         </i>
@@ -64,7 +64,7 @@
                                 <div class="form-group">
                                      
                                     <label for="search[name]" class="col-sm-2 control-label">
-                                        {!! trans('postbuffer::post.label.name')!!}
+                                        {!! trans('channels::post.label.name')!!}
                                     </label>
                                     <div class="col-sm-10">
                                         {!! Form::text('search[name]')->raw()!!}
@@ -75,7 +75,7 @@
                                 <div class="form-group">
                                      
                                     <label for="search[content]" class="col-sm-2 control-label">
-                                        {!! trans('postbuffer::post.label.content')!!}
+                                        {!! trans('channels::post.label.content')!!}
                                     </label>
                                     <div class="col-sm-10">
                                         {!! Form::text('search[content]')->raw()!!}
@@ -86,7 +86,7 @@
                                 <div class="form-group">
                                      
                                     <label for="search[posts_id]" class="col-sm-2 control-label">
-                                        {!! trans('postbuffer::post.label.posts_id')!!}
+                                        {!! trans('channels::post.label.posts_id')!!}
                                     </label>
                                     <div class="col-sm-10">
                                         {!! Form::text('search[posts_id]')->raw()!!}
@@ -141,18 +141,18 @@
 <script type="text/javascript">
 $(document).ready(function(){
 
-    $(".postbuffer-post .btn-open").click(function(){
+    $(".channels-post .btn-open").click(function(){
         toastr.info('This feature will be enabled soon.', 'Coming soon');
         return false;
-        $('#open-list').load("{!!guard_url('/settings/setting/search/postbuffer.post.search')!!}");
+        $('#open-list').load("{!!guard_url('/settings/setting/search/channels.post.search')!!}");
         $('#modal-open').modal("show");
     });
 
-   $(".postbuffer-post .btn-search").click(function(){
+   $(".channels-post .btn-search").click(function(){
       $('#modal-search').modal("show");
     });
    
-    $('.postbuffer-post .btn-save').click(function(e){
+    $('.channels-post .btn-save').click(function(e){
         toastr.info('This feature will be enabled soon.', 'Coming soon');
         return false;
         var search = prompt("Please enter name for your search");
@@ -163,7 +163,7 @@ $(document).ready(function(){
         var formData = new FormData();
         formData.append('value', $("#form-search").serialize());
         formData.append('name', search);
-        formData.append('key', 'postbuffer.post.search');
+        formData.append('key', 'channels.post.search');
         formData.append('package', 'Page');
         formData.append('module', 'Page');
 
@@ -195,7 +195,7 @@ $(document).ready(function(){
           oSearch[key] = val;
         });
         oTable.api().draw();
-        $('#postbuffer-post-list .btn-reset-filter').css('display', '');
+        $('#channels-post-list .btn-reset-filter').css('display', '');
         $('#modal-search').modal("hide");
         
       });
@@ -210,7 +210,7 @@ $(document).ready(function(){
           oSearch[key] = val;
         });
         oTable.api().draw();
-        $('#postbuffer-post-list .btn-reset-filter').css('display', 'none');
+        $('#channels-post-list .btn-reset-filter').css('display', 'none');
 
     });
 

@@ -1,8 +1,8 @@
 @extends('resource.show')
 
 @php
-$links['back'] = guard_url('postbuffer/post');
-$links['edit'] = guard_url('postbuffer/post') . '/' . $post->getRouteKey() . '/edit';
+$links['back'] = guard_url('channels/post');
+$links['edit'] = guard_url('channels/post') . '/' . $post->getRouteKey() . '/edit';
 @endphp
 
 @section('icon') 
@@ -10,16 +10,16 @@ $links['edit'] = guard_url('postbuffer/post') . '/' . $post->getRouteKey() . '/e
 @stop
 
 @section('title') 
-{!! __('postbuffer::post.title.main') !!}
+{!! __('channels::post.title.main') !!}
 @stop
 
 @section('sub.title') 
-{!! __('postbuffer::post.title.show') !!}
+{!! __('channels::post.title.show') !!}
 @stop
 
 @section('breadcrumb') 
   <li><a href="{!!guard_url('/')!!}">{{ __('app.home') }}</a></li>
-  <li><a href="{!!guard_url('$postbuffer/post')!!}">{!! __('postbuffer::post.name') !!}</a></li>
+  <li><a href="{!!guard_url('$channels/post')!!}">{!! __('channels::post.name') !!}</a></li>
   <li>{{ __('app.show') }}</li>
 @stop
 
@@ -27,11 +27,11 @@ $links['edit'] = guard_url('postbuffer/post') . '/' . $post->getRouteKey() . '/e
 @stop
 
 @section('tools') 
-    <a href="{!!guard_url('$postbuffer/post')!!}" rel="tooltip" class="btn btn-white btn-round btn-simple btn-icon pull-right add-new" data-original-title="" title="">
+    <a href="{!!guard_url('$channels/post')!!}" rel="tooltip" class="btn btn-white btn-round btn-simple btn-icon pull-right add-new" data-original-title="" title="">
             <i class="fa fa-chevron-left"></i>
     </a>
 @stop
 
 @section('content') 
-    @include('postbuffer::post.partial.show', ['mode' => 'show'])
+    @include('channels::post.partial.show', ['mode' => 'show'])
 @stop

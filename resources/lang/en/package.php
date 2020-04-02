@@ -4,14 +4,14 @@ return [
 
     /*
     |--------------------------------------------------------------------------
-    | Label language files for Postbuffer package
+    | Label language files for Channels package
     |--------------------------------------------------------------------------
     |
-    | The following language lines are the default labels for postbuffer module,
+    | The following language lines are the default labels for channels module,
     | and it is used by the template/view files in this module
     |
     */
 
-    'name'          => 'Postbuffer',
-    'names'         => 'Postbuffers',
+    'name'          => 'Channels',
+    'names'         => 'Channels',
 ];

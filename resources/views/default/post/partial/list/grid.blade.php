@@ -5,12 +5,12 @@
                         <div class="card list-view-media mb-10"  id="{!! $post->getRouteKey() !!}">
                             <div class="card-block">
                                 <div class="media">
-                                    <a class="media-left" href="{!! trans_url('postbuffer') !!}/{!! $post->getPublicKey() !!}" target="_blank">
+                                    <a class="media-left" href="{!! trans_url('channels') !!}/{!! $post->getPublicKey() !!}" target="_blank">
                                         <img class="media-object card-list-img" src="http://via.placeholder.com/264x164/FC0079/FFF?text=ADVT">
                                     </a>
                                     <div class="media-body">
                                         <div class="heading">
-                                            <h3><a  href="{!! trans_url('postbuffer') !!}/{!! $post->getPublicKey() !!}" target="_blank">{{ $post->name }}</a></h3>
+                                            <h3><a  href="{!! trans_url('channels') !!}/{!! $post->getPublicKey() !!}" target="_blank">{{ $post->name }}</a></h3>
                                             <h6>{{ $post->email }}</h6>
                                             <div class="status">
                                                 <span class="verified">Verified</span>
@@ -20,11 +20,11 @@
 
                                         <div class="actions">
 
-                                            <a href="{!! guard_url('postbuffer/post') !!}/{!! $post->getRouteKey() !!}" class="text-primary" data-toggle="tooltip" data-placement="left" title="Edit" data-action="EDIT" ><i class="icon-eye"></i></a>
+                                            <a href="{!! guard_url('channels/post') !!}/{!! $post->getRouteKey() !!}" class="text-primary" data-toggle="tooltip" data-placement="left" title="Edit" data-action="EDIT" ><i class="icon-eye"></i></a>
 
-                                            <a href="{!! guard_url('postbuffer/post') !!}/{!! $post->getRouteKey() !!}/edit" class="text-primary" data-toggle="tooltip" data-placement="left" title="Edit" data-action="EDIT" ><i class="icon-pencil"></i></a>
+                                            <a href="{!! guard_url('channels/post') !!}/{!! $post->getRouteKey() !!}/edit" class="text-primary" data-toggle="tooltip" data-placement="left" title="Edit" data-action="EDIT" ><i class="icon-pencil"></i></a>
 
-                                            <a href="{!! guard_url('postbuffer/post') !!}/{!! $post->getRouteKey() !!}" class="text-danger" data-toggle="tooltip" data-placement="left" title="Delete" data-action="DELETE" data-remove="{!! $post->getRouteKey() !!}"><i class="icon-trash"></i></a>
+                                            <a href="{!! guard_url('channels/post') !!}/{!! $post->getRouteKey() !!}" class="text-danger" data-toggle="tooltip" data-placement="left" title="Delete" data-action="DELETE" data-remove="{!! $post->getRouteKey() !!}"><i class="icon-trash"></i></a>
 
                                         </div>
                                     </div>

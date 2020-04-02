@@ -1,8 +1,8 @@
 <?php
 
-namespace Channels\Postbuffer\Repositories\Eloquent;
+namespace Postbuffer\Channels\Repositories\Eloquent;
 
-use Channels\Postbuffer\Interfaces\ChannelRepositoryInterface;
+use Postbuffer\Channels\Interfaces\ChannelRepositoryInterface;
 use Litepie\Repository\Eloquent\BaseRepository;
 
 class ChannelRepository extends BaseRepository implements ChannelRepositoryInterface
@@ -11,7 +11,7 @@ class ChannelRepository extends BaseRepository implements ChannelRepositoryInter
 
     public function boot()
     {
-        $this->fieldSearchable = config('channels.postbuffer.channel.model.search');
+        $this->fieldSearchable = config('postbuffer.channels.channel.model.search');
 
     }
 
@@ -22,6 +22,6 @@ class ChannelRepository extends BaseRepository implements ChannelRepositoryInter
      */
     public function model()
     {
-        return config('channels.postbuffer.channel.model.model');
+        return config('postbuffer.channels.channel.model.model');
     }
 }

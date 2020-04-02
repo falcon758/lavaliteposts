@@ -1,6 +1,6 @@
 <?php
 
-namespace Channels\Postbuffer\Providers;
+namespace Postbuffer\Channels\Providers;
 
 use Illuminate\Contracts\Events\Dispatcher as DispatcherContract;
 use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
@@ -13,8 +13,8 @@ class EventServiceProvider extends ServiceProvider
      * @var array
      */
     protected $listen = [
-        'Channels\Postbuffer\Events\PostbufferEvent' => [
-            'Channels\Postbuffer\Listeners\PostbufferListener',
+        'Postbuffer\Channels\Events\ChannelsEvent' => [
+            'Postbuffer\Channels\Listeners\ChannelsListener',
         ],
     ];
 

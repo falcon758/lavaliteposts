@@ -1,7 +1,7 @@
 {
-    "name": "falcon758/lavaliteposts",
-    "description": "Postbuffer package for channels.",
-    "keywords": ["lavalite", "Postbuffer"],
+    "name": "postbuffer/channels",
+    "description": "Channels package for postbuffer.",
+    "keywords": ["lavalite", "Channels"],
     "license": "MIT",
     "authors": [
         {
@@ -17,16 +17,16 @@
             "database/seeds"
         ],
         "psr-4": {
-            "Channels\\Postbuffer\\": "src"
+            "Postbuffer\\Channels\\": "src"
         }
     },
     "extra": {
         "laravel": {
             "providers": [
-                "Channels\\Postbuffer\\Providers\\PostbufferServiceProvider"
+                "Postbuffer\\Channels\\Providers\\ChannelsServiceProvider"
             ],
             "aliases": {
-                "Postbuffer"       : "Channels\\Postbuffer\\Facades\\Postbuffer"
+                "Channels"       : "Postbuffer\\Channels\\Facades\\Channels"
             }
         }
     },

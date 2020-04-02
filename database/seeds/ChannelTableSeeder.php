@@ -1,6 +1,6 @@
 <?php
 
-namespace Channels\Postbuffer;
+namespace Postbuffer\Channels;
 
 use DB;
 use Illuminate\Database\Seeder;
@@ -15,45 +15,45 @@ class ChannelTableSeeder extends Seeder
 
         DB::table('permissions')->insert([
             [
-                'slug'      => 'postbuffer.channel.view',
+                'slug'      => 'channels.channel.view',
                 'name'      => 'View Channel',
             ],
             [
-                'slug'      => 'postbuffer.channel.create',
+                'slug'      => 'channels.channel.create',
                 'name'      => 'Create Channel',
             ],
             [
-                'slug'      => 'postbuffer.channel.edit',
+                'slug'      => 'channels.channel.edit',
                 'name'      => 'Update Channel',
             ],
             [
-                'slug'      => 'postbuffer.channel.delete',
+                'slug'      => 'channels.channel.delete',
                 'name'      => 'Delete Channel',
             ],
             
             // Customize this permissions if needed.
             [
-                'slug'      => 'postbuffer.channel.verify',
+                'slug'      => 'channels.channel.verify',
                 'name'      => 'Verify Channel',
             ],
             [
-                'slug'      => 'postbuffer.channel.approve',
+                'slug'      => 'channels.channel.approve',
                 'name'      => 'Approve Channel',
             ],
             [
-                'slug'      => 'postbuffer.channel.publish',
+                'slug'      => 'channels.channel.publish',
                 'name'      => 'Publish Channel',
             ],
             [
-                'slug'      => 'postbuffer.channel.unpublish',
+                'slug'      => 'channels.channel.unpublish',
                 'name'      => 'Unpublish Channel',
             ],
             [
-                'slug'      => 'postbuffer.channel.cancel',
+                'slug'      => 'channels.channel.cancel',
                 'name'      => 'Cancel Channel',
             ],
             [
-                'slug'      => 'postbuffer.channel.archive',
+                'slug'      => 'channels.channel.archive',
                 'name'      => 'Archive Channel',
             ],
             
@@ -64,7 +64,7 @@ class ChannelTableSeeder extends Seeder
             [
                 'parent_id'   => 1,
                 'key'         => null,
-                'url'         => 'admin/postbuffer/channel',
+                'url'         => 'admin/channels/channel',
                 'name'        => 'Channel',
                 'description' => null,
                 'icon'        => 'fa fa-newspaper-o',
@@ -76,7 +76,7 @@ class ChannelTableSeeder extends Seeder
             [
                 'parent_id'   => 2,
                 'key'         => null,
-                'url'         => 'user/postbuffer/channel',
+                'url'         => 'user/channels/channel',
                 'name'        => 'Channel',
                 'description' => null,
                 'icon'        => 'icon-book-open',
@@ -103,11 +103,11 @@ class ChannelTableSeeder extends Seeder
             // Uncomment  and edit this section for entering value to settings table.
             /*
             [
-                'pacakge'   => 'Postbuffer',
+                'pacakge'   => 'Channels',
                 'module'    => 'Channel',
                 'user_type' => null,
                 'user_id'   => null,
-                'key'       => 'postbuffer.channel.key',
+                'key'       => 'channels.channel.key',
                 'name'      => 'Some name',
                 'value'     => 'Some value',
                 'type'      => 'Default',

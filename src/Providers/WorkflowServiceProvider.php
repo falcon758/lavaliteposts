@@ -1,6 +1,6 @@
 <?php
 
-namespace Channels\Postbuffer\Providers;
+namespace Postbuffer\Channels\Providers;
 
 use Litepie\Contracts\Workflow\Workflow as WorkflowContract;
 use Litepie\Foundation\Support\Providers\WorkflowServiceProvider as ServiceProvider;
@@ -14,10 +14,10 @@ class WorkflowServiceProvider extends ServiceProvider
      */
     protected $validators = [
         // Bind Post workflow validator
-        'Channels\Postbuffer\Models\Post' => \Channels\Postbuffer\Workflow\PostValidator::class,
+        'Postbuffer\Channels\Models\Post' => \Postbuffer\Channels\Workflow\PostValidator::class,
 
         // Bind Channel workflow validator
-        'Channels\Postbuffer\Models\Channel' => \Channels\Postbuffer\Workflow\ChannelValidator::class,
+        'Postbuffer\Channels\Models\Channel' => \Postbuffer\Channels\Workflow\ChannelValidator::class,
     ];
 
     /**
@@ -27,10 +27,10 @@ class WorkflowServiceProvider extends ServiceProvider
      */
     protected $actions = [
         // Bind Post workflow actions
-        'Channels\Postbuffer\Models\Post' => \Channels\Postbuffer\Workflow\PostAction::class,
+        'Postbuffer\Channels\Models\Post' => \Postbuffer\Channels\Workflow\PostAction::class,
 
         // Bind Channel workflow actions
-        'Channels\Postbuffer\Models\Channel' => \Channels\Postbuffer\Workflow\ChannelAction::class,
+        'Postbuffer\Channels\Models\Channel' => \Postbuffer\Channels\Workflow\ChannelAction::class,
     ];
 
     /**
@@ -40,10 +40,10 @@ class WorkflowServiceProvider extends ServiceProvider
      */
     protected $notifiers = [
        // Bind Post workflow notifiers
-        'Channels\Postbuffer\Models\Post' => \Channels\Postbuffer\Workflow\PostNotifier::class,
+        'Postbuffer\Channels\Models\Post' => \Postbuffer\Channels\Workflow\PostNotifier::class,
 
         // Bind Channel workflow notifiers
-        'Channels\Postbuffer\Models\Channel' => \Channels\Postbuffer\Workflow\ChannelNotifier::class,
+        'Postbuffer\Channels\Models\Channel' => \Postbuffer\Channels\Workflow\ChannelNotifier::class,
     ];
 
     /**

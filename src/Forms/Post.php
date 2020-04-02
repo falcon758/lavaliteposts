@@ -1,6 +1,6 @@
 <?php
 
-namespace Channels\Postbuffer\Forms;
+namespace Postbuffer\Channels\Forms;
 
 class Post
 {
@@ -60,8 +60,8 @@ class Post
             'fields' => [
                 'name' => [
                     "type" => 'text',
-                    "label" => trans('postbuffer::post.label.name'),
-                    "placeholder" => trans('postbuffer::post.placeholder.name'),
+                    "label" => trans('channels::post.label.name'),
+                    "placeholder" => trans('channels::post.placeholder.name'),
                     "rules" => '',
                     "group" => "main",
                     "section" => "first",
@@ -74,8 +74,8 @@ class Post
                 ],
                 'content' => [
                     "type" => 'text',
-                    "label" => trans('postbuffer::post.label.content'),
-                    "placeholder" => trans('postbuffer::post.placeholder.content'),
+                    "label" => trans('channels::post.label.content'),
+                    "placeholder" => trans('channels::post.placeholder.content'),
                     "rules" => '',
                     "group" => "main",
                     "section" => "first",
@@ -88,8 +88,8 @@ class Post
                 ],
                 'posts_id' => [
                     "type" => 'numeric',
-                    "label" => trans('postbuffer::post.label.posts_id'),
-                    "placeholder" => trans('postbuffer::post.placeholder.posts_id'),
+                    "label" => trans('channels::post.label.posts_id'),
+                    "placeholder" => trans('channels::post.placeholder.posts_id'),
                     "rules" => '',
                     "group" => "main",
                     "section" => "first",

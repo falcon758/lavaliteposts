@@ -1,9 +1,9 @@
 <?php
 
-namespace Channels\Postbuffer\Policies;
+namespace Postbuffer\Channels\Policies;
 
 use Litepie\User\Contracts\UserPolicy;
-use Channels\Postbuffer\Models\Post;
+use Postbuffer\Channels\Models\Post;
 
 class PostPolicy
 {
@@ -18,7 +18,7 @@ class PostPolicy
      */
     public function view(UserPolicy $user, Post $post)
     {
-        if ($user->canDo('postbuffer.post.view') && $user->isAdmin()) {
+        if ($user->canDo('channels.post.view') && $user->isAdmin()) {
             return true;
         }
 
@@ -35,7 +35,7 @@ class PostPolicy
      */
     public function create(UserPolicy $user)
     {
-        return  $user->canDo('postbuffer.post.create');
+        return  $user->canDo('channels.post.create');
     }
 
     /**
@@ -48,7 +48,7 @@ class PostPolicy
      */
     public function update(UserPolicy $user, Post $post)
     {
-        if ($user->canDo('postbuffer.post.edit') && $user->isAdmin()) {
+        if ($user->canDo('channels.post.edit') && $user->isAdmin()) {
             return true;
         }
 
@@ -78,7 +78,7 @@ class PostPolicy
      */
     public function verify(UserPolicy $user, Post $post)
     {
-        if ($user->canDo('postbuffer.post.verify')) {
+        if ($user->canDo('channels.post.verify')) {
             return true;
         }
 
@@ -95,7 +95,7 @@ class PostPolicy
      */
     public function approve(UserPolicy $user, Post $post)
     {
-        if ($user->canDo('postbuffer.post.approve')) {
+        if ($user->canDo('channels.post.approve')) {
             return true;
         }
 

@@ -1,7 +1,7 @@
 @extends('resource.index')
 @php
-$links['create'] = guard_url('postbuffer/channel/create');
-$links['search'] = guard_url('postbuffer/channel');
+$links['create'] = guard_url('channels/channel/create');
+$links['search'] = guard_url('channels/channel');
 @endphp
 
 @section('icon') 
@@ -9,16 +9,16 @@ $links['search'] = guard_url('postbuffer/channel');
 @stop
 
 @section('title') 
-{!! __('postbuffer::channel.title.main') !!}
+{!! __('channels::channel.title.main') !!}
 @stop
 
 @section('sub.title') 
-{!! __('postbuffer::channel.title.list') !!}
+{!! __('channels::channel.title.list') !!}
 @stop
 
 @section('breadcrumb') 
   <li><a href="{!!guard_url('/')!!}">{{ __('app.home') }}</a></li>
-  <li><a href="{!!guard_url('postbuffer/channel')!!}">{!! __('postbuffer::channel.name') !!}</a></li>
+  <li><a href="{!!guard_url('channels/channel')!!}">{!! __('channels::channel.name') !!}</a></li>
   <li>{{ __('app.list') }}</li>
 @stop
 
@@ -29,7 +29,7 @@ $links['search'] = guard_url('postbuffer/channel');
 @stop
 
 @section('list')
-    @include('postbuffer::channel.partial.list.' . $view, ['mode' => 'list'])
+    @include('channels::channel.partial.list.' . $view, ['mode' => 'list'])
 @stop
 
 @section('pagination') 

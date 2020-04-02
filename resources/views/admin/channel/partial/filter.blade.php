@@ -1,4 +1,4 @@
-<div class="btn-group postbuffer-channel">
+<div class="btn-group channels-channel">
     <button class="btn btn-xs btn-danger btn-search" type="button">
         <i aria-hidden="true" class="fa fa-search">
         </i>
@@ -64,7 +64,7 @@
                                 <div class="form-group">
                                      
                                     <label for="search[name]" class="col-sm-2 control-label">
-                                        {!! trans('postbuffer::channel.label.name')!!}
+                                        {!! trans('channels::channel.label.name')!!}
                                     </label>
                                     <div class="col-sm-10">
                                         {!! Form::text('search[name]')->raw()!!}
@@ -119,18 +119,18 @@
 <script type="text/javascript">
 $(document).ready(function(){
 
-    $(".postbuffer-channel .btn-open").click(function(){
+    $(".channels-channel .btn-open").click(function(){
         toastr.info('This feature will be enabled soon.', 'Coming soon');
         return false;
-        $('#open-list').load("{!!guard_url('/settings/setting/search/postbuffer.channel.search')!!}");
+        $('#open-list').load("{!!guard_url('/settings/setting/search/channels.channel.search')!!}");
         $('#modal-open').modal("show");
     });
 
-   $(".postbuffer-channel .btn-search").click(function(){
+   $(".channels-channel .btn-search").click(function(){
       $('#modal-search').modal("show");
     });
    
-    $('.postbuffer-channel .btn-save').click(function(e){
+    $('.channels-channel .btn-save').click(function(e){
         toastr.info('This feature will be enabled soon.', 'Coming soon');
         return false;
         var search = prompt("Please enter name for your search");
@@ -141,7 +141,7 @@ $(document).ready(function(){
         var formData = new FormData();
         formData.append('value', $("#form-search").serialize());
         formData.append('name', search);
-        formData.append('key', 'postbuffer.channel.search');
+        formData.append('key', 'channels.channel.search');
         formData.append('package', 'Page');
         formData.append('module', 'Page');
 
@@ -173,7 +173,7 @@ $(document).ready(function(){
           oSearch[key] = val;
         });
         oTable.api().draw();
-        $('#postbuffer-channel-list .btn-reset-filter').css('display', '');
+        $('#channels-channel-list .btn-reset-filter').css('display', '');
         $('#modal-search').modal("hide");
         
       });
@@ -188,7 +188,7 @@ $(document).ready(function(){
           oSearch[key] = val;
         });
         oTable.api().draw();
-        $('#postbuffer-channel-list .btn-reset-filter').css('display', 'none');
+        $('#channels-channel-list .btn-reset-filter').css('display', 'none');
 
     });
 

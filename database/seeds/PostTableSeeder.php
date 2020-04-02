@@ -1,6 +1,6 @@
 <?php
 
-namespace Channels\Postbuffer;
+namespace Postbuffer\Channels;
 
 use DB;
 use Illuminate\Database\Seeder;
@@ -15,45 +15,45 @@ class PostTableSeeder extends Seeder
 
         DB::table('permissions')->insert([
             [
-                'slug'      => 'postbuffer.post.view',
+                'slug'      => 'channels.post.view',
                 'name'      => 'View Post',
             ],
             [
-                'slug'      => 'postbuffer.post.create',
+                'slug'      => 'channels.post.create',
                 'name'      => 'Create Post',
             ],
             [
-                'slug'      => 'postbuffer.post.edit',
+                'slug'      => 'channels.post.edit',
                 'name'      => 'Update Post',
             ],
             [
-                'slug'      => 'postbuffer.post.delete',
+                'slug'      => 'channels.post.delete',
                 'name'      => 'Delete Post',
             ],
             
             // Customize this permissions if needed.
             [
-                'slug'      => 'postbuffer.post.verify',
+                'slug'      => 'channels.post.verify',
                 'name'      => 'Verify Post',
             ],
             [
-                'slug'      => 'postbuffer.post.approve',
+                'slug'      => 'channels.post.approve',
                 'name'      => 'Approve Post',
             ],
             [
-                'slug'      => 'postbuffer.post.publish',
+                'slug'      => 'channels.post.publish',
                 'name'      => 'Publish Post',
             ],
             [
-                'slug'      => 'postbuffer.post.unpublish',
+                'slug'      => 'channels.post.unpublish',
                 'name'      => 'Unpublish Post',
             ],
             [
-                'slug'      => 'postbuffer.post.cancel',
+                'slug'      => 'channels.post.cancel',
                 'name'      => 'Cancel Post',
             ],
             [
-                'slug'      => 'postbuffer.post.archive',
+                'slug'      => 'channels.post.archive',
                 'name'      => 'Archive Post',
             ],
             
@@ -64,7 +64,7 @@ class PostTableSeeder extends Seeder
             [
                 'parent_id'   => 1,
                 'key'         => null,
-                'url'         => 'admin/postbuffer/post',
+                'url'         => 'admin/channels/post',
                 'name'        => 'Post',
                 'description' => null,
                 'icon'        => 'fa fa-newspaper-o',
@@ -76,7 +76,7 @@ class PostTableSeeder extends Seeder
             [
                 'parent_id'   => 2,
                 'key'         => null,
-                'url'         => 'user/postbuffer/post',
+                'url'         => 'user/channels/post',
                 'name'        => 'Post',
                 'description' => null,
                 'icon'        => 'icon-book-open',
@@ -103,11 +103,11 @@ class PostTableSeeder extends Seeder
             // Uncomment  and edit this section for entering value to settings table.
             /*
             [
-                'pacakge'   => 'Postbuffer',
+                'pacakge'   => 'Channels',
                 'module'    => 'Post',
                 'user_type' => null,
                 'user_id'   => null,
-                'key'       => 'postbuffer.post.key',
+                'key'       => 'channels.post.key',
                 'name'      => 'Some name',
                 'value'     => 'Some value',
                 'type'      => 'Default',

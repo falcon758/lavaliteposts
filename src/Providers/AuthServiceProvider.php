@@ -1,6 +1,6 @@
 <?php
 
-namespace Channels\Postbuffer\Providers;
+namespace Postbuffer\Channels\Providers;
 
 use Illuminate\Contracts\Auth\Access\Gate as GateContract;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
@@ -14,9 +14,9 @@ class AuthServiceProvider extends ServiceProvider
      */
     protected $policies = [
         // Bind Post policy
-        'Channels\Postbuffer\Models\Post' => \Channels\Postbuffer\Policies\PostPolicy::class,
+        'Postbuffer\Channels\Models\Post' => \Postbuffer\Channels\Policies\PostPolicy::class,
 // Bind Channel policy
-        'Channels\Postbuffer\Models\Channel' => \Channels\Postbuffer\Policies\ChannelPolicy::class,
+        'Postbuffer\Channels\Models\Channel' => \Postbuffer\Channels\Policies\ChannelPolicy::class,
     ];
 
     /**

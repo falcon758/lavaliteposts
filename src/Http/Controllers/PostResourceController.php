@@ -1,12 +1,12 @@
 <?php
 
-namespace Channels\Postbuffer\Http\Controllers;
+namespace Postbuffer\Channels\Http\Controllers;
 
 use App\Http\Controllers\ResourceController as BaseController;
 use Form;
-use Channels\Postbuffer\Http\Requests\PostRequest;
-use Channels\Postbuffer\Interfaces\PostRepositoryInterface;
-use Channels\Postbuffer\Models\Post;
+use Postbuffer\Channels\Http\Requests\PostRequest;
+use Postbuffer\Channels\Interfaces\PostRepositoryInterface;
+use Postbuffer\Channels\Models\Post;
 
 /**
  * Resource controller class for post.
@@ -27,7 +27,7 @@ class PostResourceController extends BaseController
         $this->repository = $post;
         $this->repository
             ->pushCriteria(\Litepie\Repository\Criteria\RequestCriteria::class)
-            ->pushCriteria(\Channels\Postbuffer\Repositories\Criteria\PostResourceCriteria::class);
+            ->pushCriteria(\Postbuffer\Channels\Repositories\Criteria\PostResourceCriteria::class);
     }
 
     /**
@@ -42,14 +42,14 @@ class PostResourceController extends BaseController
         if ($this->response->typeIs('json')) {
             $function = camel_case('get-' . $view);
             return $this->repository
-                ->setPresenter(\Channels\Postbuffer\Repositories\Presenter\PostPresenter::class)
+                ->setPresenter(\Postbuffer\Channels\Repositories\Presenter\PostPresenter::class)
                 ->$function();
         }
 
         $posts = $this->repository->paginate();
 
-        return $this->response->setMetaTitle(trans('postbuffer::post.names'))
-            ->view('postbuffer::post.index', true)
+        return $this->response->setMetaTitle(trans('channels::post.names'))
+            ->view('channels::post.index', true)
             ->data(compact('posts', 'view'))
             ->output();
     }
@@ -66,12 +66,12 @@ class PostResourceController extends BaseController
     {
 
         if ($post->exists) {
-            $view = 'postbuffer::post.show';
+            $view = 'channels::post.show';
         } else {
-            $view = 'postbuffer::post.new';
+            $view = 'channels::post.new';
         }
 
-        return $this->response->setMetaTitle(trans('app.view') . ' ' . trans('postbuffer::post.name'))
+        return $this->response->setMetaTitle(trans('app.view') . ' ' . trans('channels::post.name'))
             ->data(compact('post'))
             ->view($view, true)
             ->output();
@@ -88,8 +88,8 @@ class PostResourceController extends BaseController
     {
 
         $post = $this->repository->newInstance([]);
-        return $this->response->setMetaTitle(trans('app.new') . ' ' . trans('postbuffer::post.name')) 
-            ->view('postbuffer::post.create', true) 
+        return $this->response->setMetaTitle(trans('app.new') . ' ' . trans('channels::post.name')) 
+            ->view('channels::post.create', true) 
             ->data(compact('post'))
             ->output();
     }
@@ -109,16 +109,16 @@ class PostResourceController extends BaseController
             $attributes['user_type'] = user_type();
             $post                 = $this->repository->create($attributes);
 
-            return $this->response->message(trans('messages.success.created', ['Module' => trans('postbuffer::post.name')]))
+            return $this->response->message(trans('messages.success.created', ['Module' => trans('channels::post.name')]))
                 ->code(204)
                 ->status('success')
-                ->url(guard_url('postbuffer/post/' . $post->getRouteKey()))
+                ->url(guard_url('channels/post/' . $post->getRouteKey()))
                 ->redirect();
         } catch (Exception $e) {
             return $this->response->message($e->getMessage())
                 ->code(400)
                 ->status('error')
-                ->url(guard_url('/postbuffer/post'))
+                ->url(guard_url('/channels/post'))
                 ->redirect();
         }
 
@@ -134,8 +134,8 @@ class PostResourceController extends BaseController
      */
     public function edit(PostRequest $request, Post $post)
     {
-        return $this->response->setMetaTitle(trans('app.edit') . ' ' . trans('postbuffer::post.name'))
-            ->view('postbuffer::post.edit', true)
+        return $this->response->setMetaTitle(trans('app.edit') . ' ' . trans('channels::post.name'))
+            ->view('channels::post.edit', true)
             ->data(compact('post'))
             ->output();
     }
@@ -154,16 +154,16 @@ class PostResourceController extends BaseController
             $attributes = $request->all();
 
             $post->update($attributes);
-            return $this->response->message(trans('messages.success.updated', ['Module' => trans('postbuffer::post.name')]))
+            return $this->response->message(trans('messages.success.updated', ['Module' => trans('channels::post.name')]))
                 ->code(204)
                 ->status('success')
-                ->url(guard_url('postbuffer/post/' . $post->getRouteKey()))
+                ->url(guard_url('channels/post/' . $post->getRouteKey()))
                 ->redirect();
         } catch (Exception $e) {
             return $this->response->message($e->getMessage())
                 ->code(400)
                 ->status('error')
-                ->url(guard_url('postbuffer/post/' . $post->getRouteKey()))
+                ->url(guard_url('channels/post/' . $post->getRouteKey()))
                 ->redirect();
         }
 
@@ -181,10 +181,10 @@ class PostResourceController extends BaseController
         try {
 
             $post->delete();
-            return $this->response->message(trans('messages.success.deleted', ['Module' => trans('postbuffer::post.name')]))
+            return $this->response->message(trans('messages.success.deleted', ['Module' => trans('channels::post.name')]))
                 ->code(202)
                 ->status('success')
-                ->url(guard_url('postbuffer/post/0'))
+                ->url(guard_url('channels/post/0'))
                 ->redirect();
 
         } catch (Exception $e) {
@@ -192,7 +192,7 @@ class PostResourceController extends BaseController
             return $this->response->message($e->getMessage())
                 ->code(400)
                 ->status('error')
-                ->url(guard_url('postbuffer/post/' . $post->getRouteKey()))
+                ->url(guard_url('channels/post/' . $post->getRouteKey()))
                 ->redirect();
         }
 
@@ -216,10 +216,10 @@ class PostResourceController extends BaseController
                 $this->repository->delete($ids);
             }
 
-            return $this->response->message(trans('messages.success.deleted', ['Module' => trans('postbuffer::post.name')]))
+            return $this->response->message(trans('messages.success.deleted', ['Module' => trans('channels::post.name')]))
                 ->status("success")
                 ->code(202)
-                ->url(guard_url('postbuffer/post'))
+                ->url(guard_url('channels/post'))
                 ->redirect();
 
         } catch (Exception $e) {
@@ -227,7 +227,7 @@ class PostResourceController extends BaseController
             return $this->response->message($e->getMessage())
                 ->status("error")
                 ->code(400)
-                ->url(guard_url('/postbuffer/post'))
+                ->url(guard_url('/channels/post'))
                 ->redirect();
         }
 
@@ -246,10 +246,10 @@ class PostResourceController extends BaseController
             $ids = hashids_decode($request->input('ids'));
             $this->repository->restore($ids);
 
-            return $this->response->message(trans('messages.success.restore', ['Module' => trans('postbuffer::post.name')]))
+            return $this->response->message(trans('messages.success.restore', ['Module' => trans('channels::post.name')]))
                 ->status("success")
                 ->code(202)
-                ->url(guard_url('/postbuffer/post'))
+                ->url(guard_url('/channels/post'))
                 ->redirect();
 
         } catch (Exception $e) {
@@ -257,7 +257,7 @@ class PostResourceController extends BaseController
             return $this->response->message($e->getMessage())
                 ->status("error")
                 ->code(400)
-                ->url(guard_url('/postbuffer/post/'))
+                ->url(guard_url('/channels/post/'))
                 ->redirect();
         }
 

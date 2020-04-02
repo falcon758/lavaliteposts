@@ -26,7 +26,7 @@
                     ->action(guard_url('/settings/settings'))!!}
 
                     {!!Form::checkboxes('manage_columns')
-                    ->checkboxes(trans('postbuffer::post.cloumns'))
+                    ->checkboxes(trans('channels::post.cloumns'))
                     ->inline()
                     ->raw()!!}
 
@@ -88,8 +88,8 @@
         return false;
         var formData = new FormData();
         formData.append('value', $('#form-manage-column').serialize());
-        formData.append('key', 'postbuffer.post.column');
-        formData.append('package', 'Postbuffer');
+        formData.append('key', 'channels.post.column');
+        formData.append('package', 'Channels');
         formData.append('module', 'Post');
         formData.append('name', 'Column');
         $.ajax({

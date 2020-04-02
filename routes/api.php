@@ -1,7 +1,7 @@
 <?php
 
 // API routes  for post
-Route::prefix('{guard}/postbuffer')->group(function () {
+Route::prefix('{guard}/channels')->group(function () {
     Route::get('post/form/{element}', 'PostAPIController@form');
     Route::resource('post', 'PostAPIController');
 });
@@ -14,20 +14,20 @@ if (Trans::isMultilingual()) {
             'where'  => ['trans' => Trans::keys('|')],
         ],
         function () {
-            // Guard routes for postbuffers
-            Route::prefix('{guard}/postbuffer')->group(function () {
+            // Guard routes for channels
+            Route::prefix('{guard}/channels')->group(function () {
                 Route::get('post/form/{element}', 'PostAPIController@form');
                 Route::apiResource('post', 'PostAPIController');
             });
-            // Public routes for postbuffers
-            Route::get('postbuffer/Post', 'PostPublicController@getPost');
+            // Public routes for channels
+            Route::get('channels/Post', 'PostPublicController@getPost');
         }
     );
 }
 
 
 // API routes  for channel
-Route::prefix('{guard}/postbuffer')->group(function () {
+Route::prefix('{guard}/channels')->group(function () {
     Route::get('channel/form/{element}', 'ChannelAPIController@form');
     Route::resource('channel', 'ChannelAPIController');
 });
@@ -40,13 +40,13 @@ if (Trans::isMultilingual()) {
             'where'  => ['trans' => Trans::keys('|')],
         ],
         function () {
-            // Guard routes for postbuffers
-            Route::prefix('{guard}/postbuffer')->group(function () {
+            // Guard routes for channels
+            Route::prefix('{guard}/channels')->group(function () {
                 Route::get('channel/form/{element}', 'ChannelAPIController@form');
                 Route::apiResource('channel', 'ChannelAPIController');
             });
-            // Public routes for postbuffers
-            Route::get('postbuffer/Channel', 'ChannelPublicController@getChannel');
+            // Public routes for channels
+            Route::get('channels/Channel', 'ChannelPublicController@getChannel');
         }
     );
 }
