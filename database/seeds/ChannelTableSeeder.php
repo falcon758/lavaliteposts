@@ -1,6 +1,6 @@
 <?php
 
-namespace Postbuffer;
+namespace Posts\Posts;
 
 use DB;
 use Illuminate\Database\Seeder;
@@ -31,6 +31,31 @@ class ChannelTableSeeder extends Seeder
                 'name'      => 'Delete Channel',
             ],
             
+            // Customize this permissions if needed.
+            [
+                'slug'      => 'posts.channel.verify',
+                'name'      => 'Verify Channel',
+            ],
+            [
+                'slug'      => 'posts.channel.approve',
+                'name'      => 'Approve Channel',
+            ],
+            [
+                'slug'      => 'posts.channel.publish',
+                'name'      => 'Publish Channel',
+            ],
+            [
+                'slug'      => 'posts.channel.unpublish',
+                'name'      => 'Unpublish Channel',
+            ],
+            [
+                'slug'      => 'posts.channel.cancel',
+                'name'      => 'Cancel Channel',
+            ],
+            [
+                'slug'      => 'posts.channel.archive',
+                'name'      => 'Archive Channel',
+            ],
             
         ]);
 

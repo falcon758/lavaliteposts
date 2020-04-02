@@ -5,7 +5,7 @@ return [
     /**
      * Provider.
      */
-    'provider'  => 'postbuffer',
+    'provider'  => 'posts',
 
     /*
      * Package.
@@ -18,53 +18,40 @@ return [
     'modules'   => ['post', 
 'channel'],
 
-    'image'    => [
-
-        'sm' => [
-            'width'     => '140',
-            'height'    => '140',
-            'action'    => 'fit',
-            'watermark' => 'img/logo/default.png',
-        ],
-
-        'md' => [
-            'width'     => '370',
-            'height'    => '420',
-            'action'    => 'fit',
-            'watermark' => 'img/logo/default.png',
-        ],
-
-        'lg' => [
-            'width'     => '780',
-            'height'    => '497',
-            'action'    => 'fit',
-            'watermark' => 'img/logo/default.png',
-        ],
-        'xl' => [
-            'width'     => '800',
-            'height'    => '530',
-            'action'    => 'fit',
-            'watermark' => 'img/logo/default.png',
-        ],
-
-    ],
-
     'post'       => [
         'model' => [
-            'model'                 => \Postbuffer\Posts\Models\Post::class,
+            'model'                 => \Posts\Posts\Models\Post::class,
             'table'                 => 'posts',
-            'presenter'             => \Postbuffer\Posts\Repositories\Presenter\PostItemPresenter::class,
+            'presenter'             => \Posts\Posts\Repositories\Presenter\PostPresenter::class,
             'hidden'                => [],
             'visible'               => [],
             'guarded'               => ['*'],
             'slugs'                 => ['slug' => 'name'],
-            'dates'                 => ['deleted_at'],
+            'dates'                 => ['deleted_at', 'createdat', 'updated_at'],
             'appends'               => [],
-            'fillable'              => ['user_id', 'id',  'order_id',  'user_id',  'user_type',  'client_id',  'method',  'address',  'code',  'status',  'tracking_id',  'bank_ref_no',  'card_name',  'currency',  'amount',  'trans_date',  'custom_field',  'description',  'created_at',  'updated_at',  'deleted_at'],
+            'fillable'              => ['id',  'name',  'slug',  'content',  'user_id',  'user_type',  'posts_id',  'deleted_at',  'created_at',  'updated_at'],
             'translatables'         => [],
             'upload_folder'         => 'posts/post',
-            'uploads'               => [],
-            'casts'                 => [],
+            'uploads'               => [
+            /*
+                    'images' => [
+                        'count' => 10,
+                        'type'  => 'image',
+                    ],
+                    'file' => [
+                        'count' => 1,
+                        'type'  => 'file',
+                    ],
+            */
+            ],
+
+            'casts'                 => [
+            /*
+                'images'    => 'array',
+                'file'      => 'array',
+            */
+            ],
+
             'revision'              => [],
             'perPage'               => '20',
             'search'        => [
@@ -74,29 +61,95 @@ return [
         ],
 
         'controller' => [
-            'provider'  => 'Postbuffer',
+            'provider'  => 'Posts',
             'package'   => 'Posts',
             'module'    => 'Post',
+        ],
+
+        'workflow'      => [
+            'points' => [
+                'start' => 'draft',
+                'end'   => ['delete'],
+            ],
+            'steps'  => [
+                'draft'     => [
+                    'label'  => "Post created",
+                    'action' => ['setStatus', 'draft'],
+                    'next'   => ['complete'],
+                ],
+                'complete'  => [
+                    'label'  => "Post completed",
+                    'status' => ['setStatus', 'complete'],
+                    'next'   => ['verify'],
+                ],
+                'verify'    => [
+                    'label'  => "Post verified",
+                    'action' => ['setStatus', 'verify'],
+                    'next'   => ['approve'],
+                ],
+                'approve'   => [
+                    'label'  => "Post approved",
+                    'action' => ['setStatus', 'approve'],
+                    'next'   => ['publish'],
+                ],
+                'publish'   => [
+                    'label'  => "Post published",
+                    'action' => ['setStatus', 'publish'],
+                    'next'   => ['unpublish', 'delete', 'target', 'archive'],
+                ],
+                'unpublish' => [
+                    'label'  => "Post unpublished",
+                    'action' => ['setStatus', 'unpublish'],
+                    'next'   => ['publish', 'target', 'archive', 'delete'],
+                ],
+                'archive'   => [
+                    'label'  => "Post archived",
+                    'action' => ['setStatus', 'archive'],
+                    'next'   => ['publish', 'delete'],
+                ],
+                'delete'    => [
+                    'Label'  => "Post deleted",
+                    'status' => ['delete', 'archive'],
+                ],
+            ],
         ],
 
     ],
 
     'channel'       => [
         'model' => [
-            'model'                 => \Postbuffer\Posts\Models\Channel::class,
+            'model'                 => \Posts\Posts\Models\Channel::class,
             'table'                 => 'channels',
-            'presenter'             => \Postbuffer\Posts\Repositories\Presenter\ChannelItemPresenter::class,
+            'presenter'             => \Posts\Posts\Repositories\Presenter\ChannelPresenter::class,
             'hidden'                => [],
             'visible'               => [],
             'guarded'               => ['*'],
             'slugs'                 => ['slug' => 'name'],
-            'dates'                 => ['deleted_at'],
+            'dates'                 => ['deleted_at', 'createdat', 'updated_at'],
             'appends'               => [],
-            'fillable'              => ['user_id', 'id',  'user_id',  'user_tye',  'seller_id',  'amount',  'tax_amount',  'tax_type',  'status',  'type',  'bank_ref',  'details',  'date_from',  'date_to',  'commission',  'created_at',  'updated_at',  'deleted_at'],
+            'fillable'              => ['id',  'name',  'slug',  'status',  'user_id',  'user_type',  'deleted_at',  'created_at',  'updated_at'],
             'translatables'         => [],
             'upload_folder'         => 'posts/channel',
-            'uploads'               => [],
-            'casts'                 => [],
+            'uploads'               => [
+            /*
+                    'images' => [
+                        'count' => 10,
+                        'type'  => 'image',
+                    ],
+                    'file' => [
+                        'count' => 1,
+                        'type'  => 'file',
+                    ],
+            */
+            ],
+
+            'casts'                 => [
+            /*
+                'images'    => 'array',
+                'file'      => 'array',
+            */
+            ],
+
             'revision'              => [],
             'perPage'               => '20',
             'search'        => [
@@ -106,9 +159,57 @@ return [
         ],
 
         'controller' => [
-            'provider'  => 'Postbuffer',
+            'provider'  => 'Posts',
             'package'   => 'Posts',
             'module'    => 'Channel',
+        ],
+
+        'workflow'      => [
+            'points' => [
+                'start' => 'draft',
+                'end'   => ['delete'],
+            ],
+            'steps'  => [
+                'draft'     => [
+                    'label'  => "Channel created",
+                    'action' => ['setStatus', 'draft'],
+                    'next'   => ['complete'],
+                ],
+                'complete'  => [
+                    'label'  => "Channel completed",
+                    'status' => ['setStatus', 'complete'],
+                    'next'   => ['verify'],
+                ],
+                'verify'    => [
+                    'label'  => "Channel verified",
+                    'action' => ['setStatus', 'verify'],
+                    'next'   => ['approve'],
+                ],
+                'approve'   => [
+                    'label'  => "Channel approved",
+                    'action' => ['setStatus', 'approve'],
+                    'next'   => ['publish'],
+                ],
+                'publish'   => [
+                    'label'  => "Channel published",
+                    'action' => ['setStatus', 'publish'],
+                    'next'   => ['unpublish', 'delete', 'target', 'archive'],
+                ],
+                'unpublish' => [
+                    'label'  => "Channel unpublished",
+                    'action' => ['setStatus', 'unpublish'],
+                    'next'   => ['publish', 'target', 'archive', 'delete'],
+                ],
+                'archive'   => [
+                    'label'  => "Channel archived",
+                    'action' => ['setStatus', 'archive'],
+                    'next'   => ['publish', 'delete'],
+                ],
+                'delete'    => [
+                    'Label'  => "Channel deleted",
+                    'status' => ['delete', 'archive'],
+                ],
+            ],
         ],
 
     ],

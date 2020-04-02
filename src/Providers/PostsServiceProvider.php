@@ -1,6 +1,6 @@
 <?php
 
-namespace Postbuffer\Posts\Providers;
+namespace Posts\Posts\Providers;
 
 use Illuminate\Support\ServiceProvider;
 
@@ -41,28 +41,91 @@ class PostsServiceProvider extends ServiceProvider
      */
     public function register()
     {
+        $this->mergeConfig();
+        $this->registerPosts();
+        $this->registerFacade();
+        $this->registerBindings();
+        //$this->registerCommands();
+    }
+
+
+    /**
+     * Register the application bindings.
+     *
+     * @return void
+     */
+    protected function registerPosts()
+    {
+        $this->app->bind('posts', function($app) {
+            return new Posts($app);
+        });
+    }
+
+    /**
+     * Register the vault facade without the user having to add it to the app.php file.
+     *
+     * @return void
+     */
+    public function registerFacade() {
+        $this->app->booting(function()
+        {
+            $loader = \Illuminate\Foundation\AliasLoader::getInstance();
+            $loader->alias('Posts', 'Lavalite\Posts\Facades\Posts');
+        });
+    }
+
+    /**
+     * Register bindings for the provider.
+     *
+     * @return void
+     */
+    public function registerBindings() {
         // Bind facade
-        $this->app->bind('postbuffer.posts', function ($app) {
-            return $this->app->make('Postbuffer\Posts\Posts');
+        $this->app->bind('posts.posts', function ($app) {
+            return $this->app->make('Posts\Posts\Posts');
         });
 
         // Bind Post to repository
         $this->app->bind(
-            'Postbuffer\Posts\Interfaces\PostRepositoryInterface',
-            \Postbuffer\Posts\Repositories\Eloquent\PostRepository::class
+            'Posts\Posts\Interfaces\PostRepositoryInterface',
+            \Posts\Posts\Repositories\Eloquent\PostRepository::class
         );
         // Bind Channel to repository
         $this->app->bind(
-            'Postbuffer\Posts\Interfaces\ChannelRepositoryInterface',
-            \Postbuffer\Posts\Repositories\Eloquent\ChannelRepository::class
+            'Posts\Posts\Interfaces\ChannelRepositoryInterface',
+            \Posts\Posts\Repositories\Eloquent\ChannelRepository::class
         );
 
-        $this->app->register(\Postbuffer\Posts\Providers\AuthServiceProvider::class);
+        $this->app->register(\Posts\Posts\Providers\AuthServiceProvider::class);
+                $this->app->register(\Posts\Posts\Providers\EventServiceProvider::class);
         
-        $this->app->register(\Postbuffer\Posts\Providers\RouteServiceProvider::class);
-                
+        $this->app->register(\Posts\Posts\Providers\RouteServiceProvider::class);
+                // $this->app->register(\Posts\Posts\Providers\WorkflowServiceProvider::class);
+            }
+
+    /**
+     * Merges user's and posts's configs.
+     *
+     * @return void
+     */
+    protected function mergeConfig()
+    {
+        $this->mergeConfigFrom(
+            __DIR__ . '/../../config/config.php', 'posts.posts'
+        );
     }
 
+    /**
+     * Register scaffolding command
+     */
+    protected function registerCommands()
+    {
+        if ($this->app->runningInConsole()) {
+            $this->commands([
+                Commands\MakePosts::class,
+            ]);
+        }
+    }
     /**
      * Get the services provided by the provider.
      *
@@ -70,7 +133,7 @@ class PostsServiceProvider extends ServiceProvider
      */
     public function provides()
     {
-        return ['postbuffer.posts'];
+        return ['posts.posts'];
     }
 
     /**
@@ -81,7 +144,7 @@ class PostsServiceProvider extends ServiceProvider
     private function publishResources()
     {
         // Publish configuration file
-        $this->publishes([__DIR__ . '/../../config/config.php' => config_path('postbuffer/posts.php')], 'config');
+        $this->publishes([__DIR__ . '/../../config/config.php' => config_path('posts/posts.php')], 'config');
 
         // Publish admin view
         $this->publishes([__DIR__ . '/../../resources/views' => base_path('resources/views/vendor/posts')], 'view');

@@ -1,6 +1,6 @@
 <?php
 
-namespace Postbuffer\Posts;
+namespace Posts\Posts;
 
 use User;
 
@@ -18,8 +18,8 @@ class Posts
     /**
      * Constructor.
      */
-    public function __construct(\Postbuffer\Posts\Interfaces\PostRepositoryInterface $post,
-        \Postbuffer\Posts\Interfaces\ChannelRepositoryInterface $channel)
+    public function __construct(\Posts\Posts\Interfaces\PostRepositoryInterface $post,
+        \Posts\Posts\Interfaces\ChannelRepositoryInterface $channel)
     {
         $this->post = $post;
         $this->channel = $channel;
@@ -50,7 +50,7 @@ class Posts
     {
 
         if (User::hasRole('user')) {
-            $this->post->pushCriteria(new \Litepie\Postbuffer\Repositories\Criteria\PostUserCriteria());
+            $this->post->pushCriteria(new \Litepie\Posts\Repositories\Criteria\PostUserCriteria());
         }
 
         $post = $this->post->scopeQuery(function ($query) use ($count) {
@@ -72,7 +72,7 @@ class Posts
     {
 
         if (User::hasRole('user')) {
-            $this->channel->pushCriteria(new \Litepie\Postbuffer\Repositories\Criteria\ChannelUserCriteria());
+            $this->channel->pushCriteria(new \Litepie\Posts\Repositories\Criteria\ChannelUserCriteria());
         }
 
         $channel = $this->channel->scopeQuery(function ($query) use ($count) {

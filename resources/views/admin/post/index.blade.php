@@ -34,19 +34,9 @@
                 <table id="posts-post-list" class="table table-striped data-table">
                     <thead class="list_head">
                         <th style="text-align: right;" width="1%"><a class="btn-reset-filter" href="#Reset" style="display:none; color:#fff;"><i class="fa fa-filter"></i></a> <input type="checkbox" id="posts-post-check-all"></th>
-                        <th>{!! trans('posts::post.label.order_id')!!}</th>
-                    <th>{!! trans('posts::post.label.client_id')!!}</th>
-                    <th>{!! trans('posts::post.label.method')!!}</th>
-                    <th>{!! trans('posts::post.label.address')!!}</th>
-                    <th>{!! trans('posts::post.label.code')!!}</th>
-                    <th>{!! trans('posts::post.label.tracking_id')!!}</th>
-                    <th>{!! trans('posts::post.label.bank_ref_no')!!}</th>
-                    <th>{!! trans('posts::post.label.card_name')!!}</th>
-                    <th>{!! trans('posts::post.label.currency')!!}</th>
-                    <th>{!! trans('posts::post.label.amount')!!}</th>
-                    <th>{!! trans('posts::post.label.trans_date')!!}</th>
-                    <th>{!! trans('posts::post.label.custom_field')!!}</th>
-                    <th>{!! trans('posts::post.label.description')!!}</th>
+                        <th data-field="name">{!! trans('posts::post.label.name')!!}</th>
+                    <th data-field="content">{!! trans('posts::post.label.content')!!}</th>
+                    <th data-field="posts_id">{!! trans('posts::post.label.posts_id')!!}</th>
                     </thead>
                 </table>
             </div>
@@ -94,19 +84,9 @@ $(document).ready(function(){
 
         "columns": [
             {data :'id'},
-            {data :'order_id'},
-            {data :'client_id'},
-            {data :'method'},
-            {data :'address'},
-            {data :'code'},
-            {data :'tracking_id'},
-            {data :'bank_ref_no'},
-            {data :'card_name'},
-            {data :'currency'},
-            {data :'amount'},
-            {data :'trans_date'},
-            {data :'custom_field'},
-            {data :'description'},
+            {data :'name'},
+            {data :'content'},
+            {data :'posts_id'},
         ],
         "pageLength": 25
     });

@@ -1,9 +1,9 @@
 <?php
 
-namespace Postbuffer\Posts\Policies;
+namespace Posts\Posts\Policies;
 
 use Litepie\User\Contracts\UserPolicy;
-use Postbuffer\Posts\Models\Channel;
+use Posts\Posts\Models\Channel;
 
 class ChannelPolicy
 {
@@ -48,7 +48,7 @@ class ChannelPolicy
      */
     public function update(UserPolicy $user, Channel $channel)
     {
-        if ($user->canDo('posts.channel.update') && $user->isAdmin()) {
+        if ($user->canDo('posts.channel.edit') && $user->isAdmin()) {
             return true;
         }
 

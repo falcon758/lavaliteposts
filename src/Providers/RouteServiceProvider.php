@@ -1,10 +1,10 @@
 <?php
 
-namespace Postbuffer\Posts\Providers;
+namespace Posts\Posts\Providers;
 
 use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvider;
 use Illuminate\Routing\Router;
-use Postbuffer\Posts\Models\Posts;
+use Posts\Posts\Models\Posts;
 use Request;
 use Route;
 
@@ -17,7 +17,7 @@ class RouteServiceProvider extends ServiceProvider
      *
      * @var string
      */
-    protected $namespace = 'Postbuffer\Posts\Http\Controllers';
+    protected $namespace = 'Posts\Posts\Http\Controllers';
 
     /**
      * Define your route model bindings, pattern filters, etc.
@@ -31,14 +31,14 @@ class RouteServiceProvider extends ServiceProvider
 
         if (Request::is('*/posts/post/*')) {
             Route::bind('post', function ($post) {
-                $postrepo = $this->app->make('Postbuffer\Posts\Interfaces\PostRepositoryInterface');
+                $postrepo = $this->app->make('Posts\Posts\Interfaces\PostRepositoryInterface');
                 return $postrepo->findorNew($post);
             });
         }
 
         if (Request::is('*/posts/channel/*')) {
             Route::bind('channel', function ($channel) {
-                $channelrepo = $this->app->make('Postbuffer\Posts\Interfaces\ChannelRepositoryInterface');
+                $channelrepo = $this->app->make('Posts\Posts\Interfaces\ChannelRepositoryInterface');
                 return $channelrepo->findorNew($channel);
             });
         }
@@ -53,6 +53,8 @@ class RouteServiceProvider extends ServiceProvider
     public function map()
     {
         $this->mapWebRoutes();
+
+        $this->mapApiRoutes();
     }
 
     /**
@@ -63,17 +65,30 @@ class RouteServiceProvider extends ServiceProvider
      * @return void
      */
     protected function mapWebRoutes()
-    {
-        if (request()->segment(1) == 'api' || request()->segment(2) == 'api') {
-            return;
-        }
-        
+    {   
         Route::group([
             'middleware' => 'web',
             'namespace'  => $this->namespace,
-            'prefix'     => trans_setlocale(),
         ], function ($router) {
             require (__DIR__ . '/../../routes/web.php');
+        });
+    }
+
+    /**
+     * Define the "api" routes for the package.
+     *
+     * These routes are typically stateless.
+     *
+     * @return void
+     */
+    protected function mapApiRoutes()
+    {
+        Route::group([
+            'middleware' => 'api',
+            'namespace'  => $this->namespace,
+            'prefix'     => 'api',
+        ], function ($router) {
+            require (__DIR__ . '/../../routes/api.php');
         });
     }
 

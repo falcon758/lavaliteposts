@@ -1,6 +1,6 @@
 <?php
 
-namespace Postbuffer\Posts\Facades;
+namespace Posts\Posts\Facades;
 
 use Illuminate\Support\Facades\Facade;
 
@@ -13,6 +13,6 @@ class Posts extends Facade
      */
     protected static function getFacadeAccessor()
     {
-        return 'postbuffer.posts';
+        return 'posts.posts';
     }
 }

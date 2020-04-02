@@ -1,6 +1,6 @@
 <?php
 
-namespace Postbuffer;
+namespace Posts\Posts;
 
 use DB;
 use Illuminate\Database\Seeder;
@@ -31,6 +31,31 @@ class PostTableSeeder extends Seeder
                 'name'      => 'Delete Post',
             ],
             
+            // Customize this permissions if needed.
+            [
+                'slug'      => 'posts.post.verify',
+                'name'      => 'Verify Post',
+            ],
+            [
+                'slug'      => 'posts.post.approve',
+                'name'      => 'Approve Post',
+            ],
+            [
+                'slug'      => 'posts.post.publish',
+                'name'      => 'Publish Post',
+            ],
+            [
+                'slug'      => 'posts.post.unpublish',
+                'name'      => 'Unpublish Post',
+            ],
+            [
+                'slug'      => 'posts.post.cancel',
+                'name'      => 'Cancel Post',
+            ],
+            [
+                'slug'      => 'posts.post.archive',
+                'name'      => 'Archive Post',
+            ],
             
         ]);
 

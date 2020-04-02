@@ -34,17 +34,7 @@
                 <table id="posts-channel-list" class="table table-striped data-table">
                     <thead class="list_head">
                         <th style="text-align: right;" width="1%"><a class="btn-reset-filter" href="#Reset" style="display:none; color:#fff;"><i class="fa fa-filter"></i></a> <input type="checkbox" id="posts-channel-check-all"></th>
-                        <th>{!! trans('posts::channel.label.user_tye')!!}</th>
-                    <th>{!! trans('posts::channel.label.seller_id')!!}</th>
-                    <th>{!! trans('posts::channel.label.amount')!!}</th>
-                    <th>{!! trans('posts::channel.label.tax_amount')!!}</th>
-                    <th>{!! trans('posts::channel.label.tax_type')!!}</th>
-                    <th>{!! trans('posts::channel.label.type')!!}</th>
-                    <th>{!! trans('posts::channel.label.bank_ref')!!}</th>
-                    <th>{!! trans('posts::channel.label.details')!!}</th>
-                    <th>{!! trans('posts::channel.label.date_from')!!}</th>
-                    <th>{!! trans('posts::channel.label.date_to')!!}</th>
-                    <th>{!! trans('posts::channel.label.commission')!!}</th>
+                        <th data-field="name">{!! trans('posts::channel.label.name')!!}</th>
                     </thead>
                 </table>
             </div>
@@ -92,17 +82,7 @@ $(document).ready(function(){
 
         "columns": [
             {data :'id'},
-            {data :'user_tye'},
-            {data :'seller_id'},
-            {data :'amount'},
-            {data :'tax_amount'},
-            {data :'tax_type'},
-            {data :'type'},
-            {data :'bank_ref'},
-            {data :'details'},
-            {data :'date_from'},
-            {data :'date_to'},
-            {data :'commission'},
+            {data :'name'},
         ],
         "pageLength": 25
     });

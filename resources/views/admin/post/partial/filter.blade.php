@@ -63,143 +63,33 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                      
-                                    <label for="search[order_id]" class="col-sm-2 control-label">
-                                        {!! trans('posts::post.label.order_id')!!}
+                                    <label for="search[name]" class="col-sm-2 control-label">
+                                        {!! trans('posts::post.label.name')!!}
                                     </label>
                                     <div class="col-sm-10">
-                                        {!! Form::text('search[order_id]')->raw()!!}
+                                        {!! Form::text('search[name]')->raw()!!}
                                     </div>
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
                                      
-                                    <label for="search[client_id]" class="col-sm-2 control-label">
-                                        {!! trans('posts::post.label.client_id')!!}
+                                    <label for="search[content]" class="col-sm-2 control-label">
+                                        {!! trans('posts::post.label.content')!!}
                                     </label>
                                     <div class="col-sm-10">
-                                        {!! Form::text('search[client_id]')->raw()!!}
+                                        {!! Form::text('search[content]')->raw()!!}
                                     </div>
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
                                      
-                                    <label for="search[method]" class="col-sm-2 control-label">
-                                        {!! trans('posts::post.label.method')!!}
+                                    <label for="search[posts_id]" class="col-sm-2 control-label">
+                                        {!! trans('posts::post.label.posts_id')!!}
                                     </label>
                                     <div class="col-sm-10">
-                                        {!! Form::text('search[method]')->raw()!!}
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                     
-                                    <label for="search[address]" class="col-sm-2 control-label">
-                                        {!! trans('posts::post.label.address')!!}
-                                    </label>
-                                    <div class="col-sm-10">
-                                        {!! Form::text('search[address]')->raw()!!}
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                     
-                                    <label for="search[code]" class="col-sm-2 control-label">
-                                        {!! trans('posts::post.label.code')!!}
-                                    </label>
-                                    <div class="col-sm-10">
-                                        {!! Form::text('search[code]')->raw()!!}
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                     
-                                    <label for="search[tracking_id]" class="col-sm-2 control-label">
-                                        {!! trans('posts::post.label.tracking_id')!!}
-                                    </label>
-                                    <div class="col-sm-10">
-                                        {!! Form::text('search[tracking_id]')->raw()!!}
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                     
-                                    <label for="search[bank_ref_no]" class="col-sm-2 control-label">
-                                        {!! trans('posts::post.label.bank_ref_no')!!}
-                                    </label>
-                                    <div class="col-sm-10">
-                                        {!! Form::text('search[bank_ref_no]')->raw()!!}
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                     
-                                    <label for="search[card_name]" class="col-sm-2 control-label">
-                                        {!! trans('posts::post.label.card_name')!!}
-                                    </label>
-                                    <div class="col-sm-10">
-                                        {!! Form::text('search[card_name]')->raw()!!}
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                     
-                                    <label for="search[currency]" class="col-sm-2 control-label">
-                                        {!! trans('posts::post.label.currency')!!}
-                                    </label>
-                                    <div class="col-sm-10">
-                                        {!! Form::text('search[currency]')->raw()!!}
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                     
-                                    <label for="search[amount]" class="col-sm-2 control-label">
-                                        {!! trans('posts::post.label.amount')!!}
-                                    </label>
-                                    <div class="col-sm-10">
-                                        {!! Form::text('search[amount]')->raw()!!}
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                     
-                                    <label for="search[trans_date]" class="col-sm-2 control-label">
-                                        {!! trans('posts::post.label.trans_date')!!}
-                                    </label>
-                                    <div class="col-sm-10">
-                                        {!! Form::text('search[trans_date]')->raw()!!}
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                     
-                                    <label for="search[custom_field]" class="col-sm-2 control-label">
-                                        {!! trans('posts::post.label.custom_field')!!}
-                                    </label>
-                                    <div class="col-sm-10">
-                                        {!! Form::text('search[custom_field]')->raw()!!}
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                     
-                                    <label for="search[description]" class="col-sm-2 control-label">
-                                        {!! trans('posts::post.label.description')!!}
-                                    </label>
-                                    <div class="col-sm-10">
-                                        {!! Form::text('search[description]')->raw()!!}
+                                        {!! Form::text('search[posts_id]')->raw()!!}
                                     </div>
                                 </div>
                             </div>

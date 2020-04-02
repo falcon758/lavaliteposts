@@ -3,6 +3,7 @@
         <ul class="nav nav-tabs primary">
             <li class="active"><a href="#details" data-toggle="tab">  {!! trans('posts::post.name') !!}</a></li>
             <div class="box-tools pull-right">
+                                @include('posts::admin.post.partial.workflow')
                                 <button type="button" class="btn btn-success btn-sm" data-action='NEW' data-load-to='#posts-post-entry' data-href='{{guard_url('posts/post/create')}}'><i class="fa fa-plus-circle"></i> {{ trans('app.new') }}</button>
                 @if($post->id )
                 <button type="button" class="btn btn-primary btn-sm" data-action="EDIT" data-load-to='#posts-post-entry' data-href='{{ guard_url('posts/post') }}/{{$post->getRouteKey()}}/edit'><i class="fa fa-pencil-square"></i> {{ trans('app.edit') }}</button>

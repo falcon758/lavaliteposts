@@ -1,12 +1,12 @@
 <?php
 
-namespace Postbuffer\Posts\Http\Controllers;
+namespace Posts\Posts\Http\Controllers;
 
 use App\Http\Controllers\ResourceController as BaseController;
 use Form;
-use Postbuffer\Posts\Http\Requests\PostRequest;
-use Postbuffer\Posts\Interfaces\PostRepositoryInterface;
-use Postbuffer\Posts\Models\Post;
+use Posts\Posts\Http\Requests\PostRequest;
+use Posts\Posts\Interfaces\PostRepositoryInterface;
+use Posts\Posts\Models\Post;
 
 /**
  * Resource controller class for post.
@@ -27,7 +27,7 @@ class PostResourceController extends BaseController
         $this->repository = $post;
         $this->repository
             ->pushCriteria(\Litepie\Repository\Criteria\RequestCriteria::class)
-            ->pushCriteria(\Postbuffer\Posts\Repositories\Criteria\PostResourceCriteria::class);
+            ->pushCriteria(\Posts\Posts\Repositories\Criteria\PostResourceCriteria::class);
     }
 
     /**
@@ -37,22 +37,20 @@ class PostResourceController extends BaseController
      */
     public function index(PostRequest $request)
     {
+        $view = $this->response->theme->listView();
 
         if ($this->response->typeIs('json')) {
-            $pageLimit = $request->input('pageLimit');
-            $data      = $this->repository
-                ->setPresenter(\Postbuffer\Posts\Repositories\Presenter\PostListPresenter::class)
-                ->getDataTable($pageLimit);
-            return $this->response
-                ->data($data)
-                ->output();
+            $function = camel_case('get-' . $view);
+            return $this->repository
+                ->setPresenter(\Posts\Posts\Repositories\Presenter\PostPresenter::class)
+                ->$function();
         }
 
         $posts = $this->repository->paginate();
 
-        return $this->response->title(trans('posts::post.names'))
+        return $this->response->setMetaTitle(trans('posts::post.names'))
             ->view('posts::post.index', true)
-            ->data(compact('posts'))
+            ->data(compact('posts', 'view'))
             ->output();
     }
 
@@ -73,7 +71,7 @@ class PostResourceController extends BaseController
             $view = 'posts::post.new';
         }
 
-        return $this->response->title(trans('app.view') . ' ' . trans('posts::post.name'))
+        return $this->response->setMetaTitle(trans('app.view') . ' ' . trans('posts::post.name'))
             ->data(compact('post'))
             ->view($view, true)
             ->output();
@@ -90,7 +88,7 @@ class PostResourceController extends BaseController
     {
 
         $post = $this->repository->newInstance([]);
-        return $this->response->title(trans('app.new') . ' ' . trans('posts::post.name')) 
+        return $this->response->setMetaTitle(trans('app.new') . ' ' . trans('posts::post.name')) 
             ->view('posts::post.create', true) 
             ->data(compact('post'))
             ->output();
@@ -136,7 +134,7 @@ class PostResourceController extends BaseController
      */
     public function edit(PostRequest $request, Post $post)
     {
-        return $this->response->title(trans('app.edit') . ' ' . trans('posts::post.name'))
+        return $this->response->setMetaTitle(trans('app.edit') . ' ' . trans('posts::post.name'))
             ->view('posts::post.edit', true)
             ->data(compact('post'))
             ->output();
@@ -186,7 +184,7 @@ class PostResourceController extends BaseController
             return $this->response->message(trans('messages.success.deleted', ['Module' => trans('posts::post.name')]))
                 ->code(202)
                 ->status('success')
-                ->url(guard_url('posts/post'))
+                ->url(guard_url('posts/post/0'))
                 ->redirect();
 
         } catch (Exception $e) {

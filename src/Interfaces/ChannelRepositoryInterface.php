@@ -1,6 +1,6 @@
 <?php
 
-namespace Postbuffer\Posts\Interfaces;
+namespace Posts\Posts\Interfaces;
 
 interface ChannelRepositoryInterface
 {

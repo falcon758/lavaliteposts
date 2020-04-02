@@ -1,22 +1,38 @@
 <?php
 
 return [
+    /*
+    |--------------------------------------------------------------------------
+    | Language files for channel in posts package
+    |--------------------------------------------------------------------------
+    |
+    | The following language lines are  for  channel module in posts package
+    | and it is used by the template/view files in this module
+    |
+    */
 
     /**
      * Singlular and plural name of the module
      */
     'name'          => 'Channel',
     'names'         => 'Channels',
-    'title'       => [
+    
+    /**
+     * Singlular and plural name of the module
+     */
+    'title'         => [
         'main'  => 'Channels',
-        'sub' => 'Channels'
+        'sub'   => 'Channels',
+        'list'  => 'List of channels',
+        'edit'  => 'Edit channel',
+        'create'    => 'Create new channel'
     ],
 
     /**
      * Options for select/radio/check.
      */
     'options'       => [
-            
+            'status'              => ['show','hide'],
     ],
 
     /**
@@ -24,22 +40,14 @@ return [
      */
     'placeholder'   => [
         'id'                         => 'Please enter id',
+        'name'                       => 'Please enter name',
+        'slug'                       => 'Please enter slug',
+        'status'                     => 'Please select status',
         'user_id'                    => 'Please enter user id',
-        'user_type'                   => 'Please enter user type',
-        'seller_id'                  => 'Please enter seller id',
-        'amount'                     => 'Please enter amount',
-        'tax_amount'                 => 'Please enter tax amount',
-        'tax_type'                   => 'Please enter tax type',
-        'status'                     => 'Please enter status',
-        'type'                       => 'Please enter type',
-        'bank_ref'                   => 'Please enter bank ref',
-        'details'                    => 'Please enter details',
-        'date_from'                  => 'Please select date from',
-        'date_to'                    => 'Please select date to',
-        'commission'                 => 'Please enter commission',
+        'user_type'                  => 'Please enter user type',
+        'deleted_at'                 => 'Please select deleted at',
         'created_at'                 => 'Please select created at',
         'updated_at'                 => 'Please select updated at',
-        'deleted_at'                 => 'Please select deleted at',
     ],
 
     /**
@@ -47,39 +55,21 @@ return [
      */
     'label'         => [
         'id'                         => 'Id',
-        'user_id'                    => 'User id',
-        'user_type'                   => 'User type',
-        'seller_id'                  => 'Seller id',
-        'amount'                     => 'Amount',
-        'tax_amount'                 => 'Tax amount',
-        'tax_type'                   => 'Tax type',
+        'name'                       => 'Name',
+        'slug'                       => 'Slug',
         'status'                     => 'Status',
-        'type'                       => 'Type',
-        'bank_ref'                   => 'Bank ref',
-        'details'                    => 'Details',
-        'date_from'                  => 'Date from',
-        'date_to'                    => 'Date to',
-        'commission'                 => 'Commission',
+        'user_id'                    => 'User id',
+        'user_type'                  => 'User type',
+        'deleted_at'                 => 'Deleted at',
         'created_at'                 => 'Created at',
         'updated_at'                 => 'Updated at',
-        'deleted_at'                 => 'Deleted at',
     ],
 
     /**
      * Columns array for show hide checkbox.
      */
-    'columns'         => [
-        'user_type'                   => ['name' => 'User type', 'data-column' => 1, 'checked'],
-        'seller_id'                  => ['name' => 'Seller id', 'data-column' => 2, 'checked'],
-        'amount'                     => ['name' => 'Amount', 'data-column' => 3, 'checked'],
-        'tax_amount'                 => ['name' => 'Tax amount', 'data-column' => 4, 'checked'],
-        'tax_type'                   => ['name' => 'Tax type', 'data-column' => 5, 'checked'],
-        'type'                       => ['name' => 'Type', 'data-column' => 6, 'checked'],
-        'bank_ref'                   => ['name' => 'Bank ref', 'data-column' => 7, 'checked'],
-        'details'                    => ['name' => 'Details', 'data-column' => 8, 'checked'],
-        'date_from'                  => ['name' => 'Date from', 'data-column' => 9, 'checked'],
-        'date_to'                    => ['name' => 'Date to', 'data-column' => 10, 'checked'],
-        'commission'                 => ['name' => 'Commission', 'data-column' => 11, 'checked'],
+    'cloumns'         => [
+        'name'                       => ['name' => 'Name', 'data-column' => 1, 'checked'],
     ],
 
     /**

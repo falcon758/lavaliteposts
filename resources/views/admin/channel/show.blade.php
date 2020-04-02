@@ -3,6 +3,7 @@
         <ul class="nav nav-tabs primary">
             <li class="active"><a href="#details" data-toggle="tab">  {!! trans('posts::channel.name') !!}</a></li>
             <div class="box-tools pull-right">
+                                @include('posts::admin.channel.partial.workflow')
                                 <button type="button" class="btn btn-success btn-sm" data-action='NEW' data-load-to='#posts-channel-entry' data-href='{{guard_url('posts/channel/create')}}'><i class="fa fa-plus-circle"></i> {{ trans('app.new') }}</button>
                 @if($channel->id )
                 <button type="button" class="btn btn-primary btn-sm" data-action="EDIT" data-load-to='#posts-channel-entry' data-href='{{ guard_url('posts/channel') }}/{{$channel->getRouteKey()}}/edit'><i class="fa fa-pencil-square"></i> {{ trans('app.edit') }}</button>

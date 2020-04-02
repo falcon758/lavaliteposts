@@ -1,6 +1,6 @@
 <?php
 
-namespace Postbuffer\Posts\Http\Requests;
+namespace Posts\Posts\Http\Requests;
 
 use App\Http\Requests\Request as FormRequest;
 
@@ -16,8 +16,8 @@ class PostRequest extends FormRequest
         $this->model = $this->route('post');
 
         if (is_null($this->model)) {
-            // Determine if the user is authorized to access example module,
-            return $this->canAccess();
+            // Determine if the user is authorized to access post module,
+            return $this->user()->can('view', config('posts.posts.post.model.model'));
         }
 
         if ($this->isWorkflow()) {
@@ -32,7 +32,7 @@ class PostRequest extends FormRequest
 
         if ($this->isEdit() || $this->isUpdate()) {
             // Determine if the user is authorized to update an entry,
-            return $this->can('edit');
+            return $this->can('update');
         }
 
         if ($this->isDelete()) {
@@ -72,13 +72,4 @@ class PostRequest extends FormRequest
         ];
     }
 
-    /**
-     * Check whether the user can access the module.
-     *
-     * @return bool
-     **/
-    protected function canAccess()
-    {
-        return user()->canDo('calendar.calendar.view');
-    }
 }

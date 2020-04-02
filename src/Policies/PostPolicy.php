@@ -1,9 +1,9 @@
 <?php
 
-namespace Postbuffer\Posts\Policies;
+namespace Posts\Posts\Policies;
 
 use Litepie\User\Contracts\UserPolicy;
-use Postbuffer\Posts\Models\Post;
+use Posts\Posts\Models\Post;
 
 class PostPolicy
 {
@@ -48,7 +48,7 @@ class PostPolicy
      */
     public function update(UserPolicy $user, Post $post)
     {
-        if ($user->canDo('posts.post.update') && $user->isAdmin()) {
+        if ($user->canDo('posts.post.edit') && $user->isAdmin()) {
             return true;
         }
 

@@ -1,12 +1,12 @@
 <?php
 
-namespace Postbuffer\Posts\Http\Controllers;
+namespace Posts\Posts\Http\Controllers;
 
 use App\Http\Controllers\ResourceController as BaseController;
 use Form;
-use Postbuffer\Posts\Http\Requests\ChannelRequest;
-use Postbuffer\Posts\Interfaces\ChannelRepositoryInterface;
-use Postbuffer\Posts\Models\Channel;
+use Posts\Posts\Http\Requests\ChannelRequest;
+use Posts\Posts\Interfaces\ChannelRepositoryInterface;
+use Posts\Posts\Models\Channel;
 
 /**
  * Resource controller class for channel.
@@ -27,7 +27,7 @@ class ChannelResourceController extends BaseController
         $this->repository = $channel;
         $this->repository
             ->pushCriteria(\Litepie\Repository\Criteria\RequestCriteria::class)
-            ->pushCriteria(\Postbuffer\Posts\Repositories\Criteria\ChannelResourceCriteria::class);
+            ->pushCriteria(\Posts\Posts\Repositories\Criteria\ChannelResourceCriteria::class);
     }
 
     /**
@@ -37,22 +37,20 @@ class ChannelResourceController extends BaseController
      */
     public function index(ChannelRequest $request)
     {
+        $view = $this->response->theme->listView();
 
         if ($this->response->typeIs('json')) {
-            $pageLimit = $request->input('pageLimit');
-            $data      = $this->repository
-                ->setPresenter(\Postbuffer\Posts\Repositories\Presenter\ChannelListPresenter::class)
-                ->getDataTable($pageLimit);
-            return $this->response
-                ->data($data)
-                ->output();
+            $function = camel_case('get-' . $view);
+            return $this->repository
+                ->setPresenter(\Posts\Posts\Repositories\Presenter\ChannelPresenter::class)
+                ->$function();
         }
 
         $channels = $this->repository->paginate();
 
-        return $this->response->title(trans('posts::channel.names'))
+        return $this->response->setMetaTitle(trans('posts::channel.names'))
             ->view('posts::channel.index', true)
-            ->data(compact('channels'))
+            ->data(compact('channels', 'view'))
             ->output();
     }
 
@@ -73,7 +71,7 @@ class ChannelResourceController extends BaseController
             $view = 'posts::channel.new';
         }
 
-        return $this->response->title(trans('app.view') . ' ' . trans('posts::channel.name'))
+        return $this->response->setMetaTitle(trans('app.view') . ' ' . trans('posts::channel.name'))
             ->data(compact('channel'))
             ->view($view, true)
             ->output();
@@ -90,7 +88,7 @@ class ChannelResourceController extends BaseController
     {
 
         $channel = $this->repository->newInstance([]);
-        return $this->response->title(trans('app.new') . ' ' . trans('posts::channel.name')) 
+        return $this->response->setMetaTitle(trans('app.new') . ' ' . trans('posts::channel.name')) 
             ->view('posts::channel.create', true) 
             ->data(compact('channel'))
             ->output();
@@ -136,7 +134,7 @@ class ChannelResourceController extends BaseController
      */
     public function edit(ChannelRequest $request, Channel $channel)
     {
-        return $this->response->title(trans('app.edit') . ' ' . trans('posts::channel.name'))
+        return $this->response->setMetaTitle(trans('app.edit') . ' ' . trans('posts::channel.name'))
             ->view('posts::channel.edit', true)
             ->data(compact('channel'))
             ->output();
@@ -186,7 +184,7 @@ class ChannelResourceController extends BaseController
             return $this->response->message(trans('messages.success.deleted', ['Module' => trans('posts::channel.name')]))
                 ->code(202)
                 ->status('success')
-                ->url(guard_url('posts/channel'))
+                ->url(guard_url('posts/channel/0'))
                 ->redirect();
 
         } catch (Exception $e) {
