@@ -4,7 +4,7 @@ Lavalite package that provides posts management facility for the cms.
 
 Begin by installing this package through Composer. Edit your project's `composer.json` file to require `posts/posts`.
 
-    "posts/posts": "dev-master"
+    "posts/posts": "*"
 
 Next, update Composer from the Terminal:
 
