@@ -25,7 +25,7 @@ class CreatePostsTable extends Migration
             $table->string('content', 200)->nullable();
             $table->integer('user_id')->nullable();
             $table->string('user_type', 200)->nullable();
-            $table->integer('posts_id')->nullable();
+            $table->integer('channel_id')->nullable();
             $table->softDeletes();
             $table->nullableTimestamps();
         });
