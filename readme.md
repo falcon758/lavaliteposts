@@ -23,7 +23,7 @@ And also add it to alias
 **Migration and seeds**
 
     php artisan migrate
-    php artisan db:seed --class=Postbuffer\\PostsTableSeeder
+    php artisan db:seed --class=Postbuffer\\PostTableSeeder
 
 **Publishing configuration**
 
