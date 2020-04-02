@@ -32,14 +32,14 @@ class RouteServiceProvider extends ServiceProvider
         if (Request::is('*/channels/post/*')) {
             Route::bind('post', function ($post) {
                 $postrepo = $this->app->make('Postbuffer\Channels\Interfaces\PostRepositoryInterface');
-                return $postrepo->findorNew($post);
+                return is_numeric($post) ? $postrepo->firstOrNew(['id' => $post]) : $postrepo->findOrNew($post);
             });
         }
 
         if (Request::is('*/channels/channel/*')) {
             Route::bind('channel', function ($channel) {
                 $channelrepo = $this->app->make('Postbuffer\Channels\Interfaces\ChannelRepositoryInterface');
-                return $channelrepo->findorNew($channel);
+                return is_numeric($channel) ? $channelrepo->firstOrNew(['id' => $channel]) : $channelrepo->findOrNew($channel);
             });
         }
 
