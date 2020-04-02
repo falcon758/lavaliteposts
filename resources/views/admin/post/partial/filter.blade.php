@@ -1,4 +1,4 @@
-<div class="btn-group posts-post">
+<div class="btn-group postbuffer-post">
     <button class="btn btn-xs btn-danger btn-search" type="button">
         <i aria-hidden="true" class="fa fa-search">
         </i>
@@ -64,7 +64,7 @@
                                 <div class="form-group">
                                      
                                     <label for="search[name]" class="col-sm-2 control-label">
-                                        {!! trans('posts::post.label.name')!!}
+                                        {!! trans('postbuffer::post.label.name')!!}
                                     </label>
                                     <div class="col-sm-10">
                                         {!! Form::text('search[name]')->raw()!!}
@@ -75,7 +75,7 @@
                                 <div class="form-group">
                                      
                                     <label for="search[content]" class="col-sm-2 control-label">
-                                        {!! trans('posts::post.label.content')!!}
+                                        {!! trans('postbuffer::post.label.content')!!}
                                     </label>
                                     <div class="col-sm-10">
                                         {!! Form::text('search[content]')->raw()!!}
@@ -86,7 +86,7 @@
                                 <div class="form-group">
                                      
                                     <label for="search[posts_id]" class="col-sm-2 control-label">
-                                        {!! trans('posts::post.label.posts_id')!!}
+                                        {!! trans('postbuffer::post.label.posts_id')!!}
                                     </label>
                                     <div class="col-sm-10">
                                         {!! Form::text('search[posts_id]')->raw()!!}
@@ -141,18 +141,18 @@
 <script type="text/javascript">
 $(document).ready(function(){
 
-    $(".posts-post .btn-open").click(function(){
+    $(".postbuffer-post .btn-open").click(function(){
         toastr.info('This feature will be enabled soon.', 'Coming soon');
         return false;
-        $('#open-list').load("{!!guard_url('/settings/setting/search/posts.post.search')!!}");
+        $('#open-list').load("{!!guard_url('/settings/setting/search/postbuffer.post.search')!!}");
         $('#modal-open').modal("show");
     });
 
-   $(".posts-post .btn-search").click(function(){
+   $(".postbuffer-post .btn-search").click(function(){
       $('#modal-search').modal("show");
     });
    
-    $('.posts-post .btn-save').click(function(e){
+    $('.postbuffer-post .btn-save').click(function(e){
         toastr.info('This feature will be enabled soon.', 'Coming soon');
         return false;
         var search = prompt("Please enter name for your search");
@@ -163,7 +163,7 @@ $(document).ready(function(){
         var formData = new FormData();
         formData.append('value', $("#form-search").serialize());
         formData.append('name', search);
-        formData.append('key', 'posts.post.search');
+        formData.append('key', 'postbuffer.post.search');
         formData.append('package', 'Page');
         formData.append('module', 'Page');
 
@@ -195,7 +195,7 @@ $(document).ready(function(){
           oSearch[key] = val;
         });
         oTable.api().draw();
-        $('#posts-post-list .btn-reset-filter').css('display', '');
+        $('#postbuffer-post-list .btn-reset-filter').css('display', '');
         $('#modal-search').modal("hide");
         
       });
@@ -210,7 +210,7 @@ $(document).ready(function(){
           oSearch[key] = val;
         });
         oTable.api().draw();
-        $('#posts-post-list .btn-reset-filter').css('display', 'none');
+        $('#postbuffer-post-list .btn-reset-filter').css('display', 'none');
 
     });
 

@@ -1,6 +1,6 @@
 <?php
 
-namespace Posts\Posts\Repositories\Criteria;
+namespace Channels\Postbuffer\Repositories\Criteria;
 
 use Litepie\Repository\Contracts\CriteriaInterface;
 use Litepie\Repository\Contracts\RepositoryInterface;

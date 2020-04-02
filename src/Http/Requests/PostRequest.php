@@ -1,6 +1,6 @@
 <?php
 
-namespace Posts\Posts\Http\Requests;
+namespace Channels\Postbuffer\Http\Requests;
 
 use App\Http\Requests\Request as FormRequest;
 
@@ -17,7 +17,7 @@ class PostRequest extends FormRequest
 
         if (is_null($this->model)) {
             // Determine if the user is authorized to access post module,
-            return $this->user()->can('view', config('posts.posts.post.model.model'));
+            return $this->user()->can('view', config('channels.postbuffer.post.model.model'));
         }
 
         if ($this->isWorkflow()) {

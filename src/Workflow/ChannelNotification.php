@@ -1,9 +1,9 @@
 <?php
 
-namespace Posts\Posts\Workflow;
+namespace Channels\Postbuffer\Workflow;
 
-use Posts\Posts\Models\Channel;
-use Posts\Posts\Notifications\ChannelWorkflow as ChannelNotifyer;
+use Channels\Postbuffer\Models\Channel;
+use Channels\Postbuffer\Notifications\ChannelWorkflow as ChannelNotifyer;
 use Notification;
 
 class ChannelNotification

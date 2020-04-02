@@ -1,6 +1,6 @@
 <?php
 
-namespace Posts\Posts\Forms;
+namespace Channels\Postbuffer\Forms;
 
 class Channel
 {
@@ -60,8 +60,8 @@ class Channel
             'fields' => [
                 'name' => [
                     "type" => 'text',
-                    "label" => trans('posts::channel.label.name'),
-                    "placeholder" => trans('posts::channel.placeholder.name'),
+                    "label" => trans('postbuffer::channel.label.name'),
+                    "placeholder" => trans('postbuffer::channel.placeholder.name'),
                     "rules" => '',
                     "group" => "main",
                     "section" => "first",

@@ -6,7 +6,7 @@ The instructions below will help you to properly install the generated package t
 
 Extract the package contents to the folder 
 
-`/packages/posts/posts/`
+`/packages/channels/postbuffer/`
 
 ## Composer
 
@@ -21,14 +21,14 @@ Add the below entries in the `composer.json` file's autoload section and run the
         "classmap": [
             ...
             
-            "packages/posts/posts/database/seeds",
+            "packages/channels/postbuffer/database/seeds",
             
             ...
         ],
         "psr-4": {
             ...
             
-            "Posts\\Posts\\": "packages/posts/posts/src",
+            "Channels\\Postbuffer\\": "packages/channels/postbuffer/src",
             
             ...
         }
@@ -47,7 +47,7 @@ Add the entries in service provider in `config/app.php`
     'providers'       => [
         ...
         
-        Posts\Posts\Providers\PostsServiceProvider::class,
+        Channels\Postbuffer\Providers\PostbufferServiceProvider::class,
         
         ...
     ],
@@ -57,7 +57,7 @@ Add the entries in service provider in `config/app.php`
     'alias'             => [
         ...
         
-        'Posts'  => Posts\Posts\Facades\Posts::class,
+        'Postbuffer'  => Channels\Postbuffer\Facades\Postbuffer::class,
         
         ...
     ]
@@ -71,22 +71,22 @@ After service provider is set run the commapnd to migrate and seed the database.
 
 
     php artisan migrate
-    php artisan db:seed --class=Posts\\PostsTableSeeder
+    php artisan db:seed --class=Channels\\PostbufferTableSeeder
 
 ## Publishing
 
 
 **Publishing configuration**
 
-    php artisan vendor:publish --provider="Posts\Posts\Providers\PostsServiceProvider" --tag="config"
+    php artisan vendor:publish --provider="Channels\Postbuffer\Providers\PostbufferServiceProvider" --tag="config"
 
 **Publishing language**
 
-    php artisan vendor:publish --provider="Posts\Posts\Providers\PostsServiceProvider" --tag="lang"
+    php artisan vendor:publish --provider="Channels\Postbuffer\Providers\PostbufferServiceProvider" --tag="lang"
 
 **Publishing views**
 
-    php artisan vendor:publish --provider="Posts\Posts\Providers\PostsServiceProvider" --tag="view"
+    php artisan vendor:publish --provider="Channels\Postbuffer\Providers\PostbufferServiceProvider" --tag="view"
 
 
 ## URLs and APIs
@@ -96,45 +96,45 @@ After service provider is set run the commapnd to migrate and seed the database.
 
 **Admin**
 
-    http://path-to-route-folder/admin/posts/{modulename}
+    http://path-to-route-folder/admin/postbuffer/{modulename}
 
 **User**
 
-    http://path-to-route-folder/user/posts/{modulename}
+    http://path-to-route-folder/user/postbuffer/{modulename}
 
 **Public**
 
-    http://path-to-route-folder/posts
+    http://path-to-route-folder/postbuffers
 
 
 ### API endpoints
 
 **List**
 
-    http://path-to-route-folder/api/user/posts/{modulename}
+    http://path-to-route-folder/api/user/postbuffer/{modulename}
     METHOD: GET
 
 **Create**
 
-    http://path-to-route-folder/api/user/posts/{modulename}
+    http://path-to-route-folder/api/user/postbuffer/{modulename}
     METHOD: POST
 
 **Edit**
 
-    http://path-to-route-folder/api/user/posts/{modulename}/{id}
+    http://path-to-route-folder/api/user/postbuffer/{modulename}/{id}
     METHOD: PUT
 
 **Delete**
 
-    http://path-to-route-folder/api/user/posts/{modulename}/{id}
+    http://path-to-route-folder/api/user/postbuffer/{modulename}/{id}
     METHOD: DELETE
 
 **Public List**
 
-    http://path-to-route-folder/api/posts/{modulename}
+    http://path-to-route-folder/api/postbuffer/{modulename}
     METHOD: GET
 
 **Public Single**
 
-    http://path-to-route-folder/api/posts/{modulename}/{slug}
+    http://path-to-route-folder/api/postbuffer/{modulename}/{slug}
     METHOD: GET

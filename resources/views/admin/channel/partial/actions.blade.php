@@ -6,21 +6,21 @@
     <span class="sr-only">Toggle Dropdown</span>
     </button>
     <ul class="dropdown-menu list" role="menu">
-        <li><a class="btn-link" data-url="{{ guard_url('posts/channel/action/multiple/print') }}"><i class="fa fa-fw fa-print" aria-hidden="true" target="_blank"></i> Print</a></li>
+        <li><a class="btn-link" data-url="{{ guard_url('postbuffer/channel/action/multiple/print') }}"><i class="fa fa-fw fa-print" aria-hidden="true" target="_blank"></i> Print</a></li>
 
-        <li><a class="btn-link" data-url="{{ guard_url('posts/channel/action/multiple/pdf') }}"><i class="fa fa-fw fa-file-pdf-o" aria-hidden="true"></i> Download PDF</a></li>
+        <li><a class="btn-link" data-url="{{ guard_url('postbuffer/channel/action/multiple/pdf') }}"><i class="fa fa-fw fa-file-pdf-o" aria-hidden="true"></i> Download PDF</a></li>
 
-        <li><a class="btn-link" data-url="{{ guard_url('posts/channel/action/multiple/excel') }}"><i class="fa fa-fw fa-file-excel-o" aria-hidden="true"></i> Download Excel</a></li>
+        <li><a class="btn-link" data-url="{{ guard_url('postbuffer/channel/action/multiple/excel') }}"><i class="fa fa-fw fa-file-excel-o" aria-hidden="true"></i> Download Excel</a></li>
         <li class="divider"></li>
 
-        <li><a class="btn-modal" data-url="{{ guard_url('posts/channel/action/mail') }}" data-title="Send Mail to contact"><i class="fa fa-fw fa-envelope-o" aria-hidden="true"></i> Send Mail</a></li>
+        <li><a class="btn-modal" data-url="{{ guard_url('postbuffer/channel/action/mail') }}" data-title="Send Mail to contact"><i class="fa fa-fw fa-envelope-o" aria-hidden="true"></i> Send Mail</a></li>
 
-        <li><a class="btn-modal" data-url="{{ guard_url('posts/channel/action/sms') }}" data-title="Send SMS to contact"><i class="fa fa-fw fa-comment-o" aria-hidden="true"></i> Send SMS</a></li>
+        <li><a class="btn-modal" data-url="{{ guard_url('postbuffer/channel/action/sms') }}" data-title="Send SMS to contact"><i class="fa fa-fw fa-comment-o" aria-hidden="true"></i> Send SMS</a></li>
         <li class="divider"></li>
 
-                <li><a class="btn-action" data-method="POST" data-title="Delete" data-text="Do this data!" data-url="{{ guard_url('posts/channel/action/delete/temporarily') }}"><i class="fa fa-fw fa-trash-o" aria-hidden="true"></i> Delete</a></li>
+                <li><a class="btn-action" data-method="POST" data-title="Delete" data-text="Do this data!" data-url="{{ guard_url('postbuffer/channel/action/delete/temporarily') }}"><i class="fa fa-fw fa-trash-o" aria-hidden="true"></i> Delete</a></li>
         
-                <li><a class="btn-action" data-method="POST" data-title="Archive" data-text="Do you want to change the status of this data?" data-url="{{ guard_url('posts/channel/action/status/archive') }}"><i class="fa fa-fw fa-archive" aria-hidden="true"></i> Archive</a></li>
+                <li><a class="btn-action" data-method="POST" data-title="Archive" data-text="Do you want to change the status of this data?" data-url="{{ guard_url('postbuffer/channel/action/status/archive') }}"><i class="fa fa-fw fa-archive" aria-hidden="true"></i> Archive</a></li>
 
         
     </ul>
@@ -138,7 +138,7 @@ $(document).ready(function(){
                     success:function(data, textStatus, jqXHR)
                     {
                         swal("Updated!", data.message, "success");
-                        $('#posts-channel-list').DataTable().ajax.reload( null, false );
+                        $('#postbuffer-channel-list').DataTable().ajax.reload( null, false );
                         arrayids = [];
                     },
                     error:function(data, textStatus, jqXHR)

@@ -1,10 +1,10 @@
 <?php
 
-namespace Posts\Posts\Providers;
+namespace Channels\Postbuffer\Providers;
 
 use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvider;
 use Illuminate\Routing\Router;
-use Posts\Posts\Models\Posts;
+use Channels\Postbuffer\Models\Postbuffer;
 use Request;
 use Route;
 
@@ -17,7 +17,7 @@ class RouteServiceProvider extends ServiceProvider
      *
      * @var string
      */
-    protected $namespace = 'Posts\Posts\Http\Controllers';
+    protected $namespace = 'Channels\Postbuffer\Http\Controllers';
 
     /**
      * Define your route model bindings, pattern filters, etc.
@@ -29,16 +29,16 @@ class RouteServiceProvider extends ServiceProvider
     {
         parent::boot();
 
-        if (Request::is('*/posts/post/*')) {
+        if (Request::is('*/postbuffer/post/*')) {
             Route::bind('post', function ($post) {
-                $postrepo = $this->app->make('Posts\Posts\Interfaces\PostRepositoryInterface');
+                $postrepo = $this->app->make('Channels\Postbuffer\Interfaces\PostRepositoryInterface');
                 return $postrepo->findorNew($post);
             });
         }
 
-        if (Request::is('*/posts/channel/*')) {
+        if (Request::is('*/postbuffer/channel/*')) {
             Route::bind('channel', function ($channel) {
-                $channelrepo = $this->app->make('Posts\Posts\Interfaces\ChannelRepositoryInterface');
+                $channelrepo = $this->app->make('Channels\Postbuffer\Interfaces\ChannelRepositoryInterface');
                 return $channelrepo->findorNew($channel);
             });
         }

@@ -1,7 +1,7 @@
 @extends('resource.edit')
 @php
-$links['back'] = guard_url('posts/post');
-$links['form'] = guard_url('posts/post') . '/' . $post->getRouteKey();
+$links['back'] = guard_url('postbuffer/post');
+$links['form'] = guard_url('postbuffer/post') . '/' . $post->getRouteKey();
 @endphp
 
 @section('icon') 
@@ -9,16 +9,16 @@ $links['form'] = guard_url('posts/post') . '/' . $post->getRouteKey();
 @stop
 
 @section('title') 
-{!! __('posts::post.title.main') !!}
+{!! __('postbuffer::post.title.main') !!}
 @stop
 
 @section('sub.title') 
-{!! __('posts::post.title.edit') !!}
+{!! __('postbuffer::post.title.edit') !!}
 @stop
 
 @section('breadcrumb') 
   <li><a href="{!!guard_url('/')!!}">{{ __('app.home') }}</a></li>
-  <li><a href="{!!guard_url('posts/post')!!}">{!! __('posts::post.name') !!}</a></li>
+  <li><a href="{!!guard_url('postbuffer/post')!!}">{!! __('postbuffer::post.name') !!}</a></li>
   <li>{{ __('app.edit') }}</li>
 @stop
 
@@ -28,13 +28,13 @@ $links['form'] = guard_url('posts/post') . '/' . $post->getRouteKey();
 @stop
 
 @section('tools') 
-    <a href="{!!guard_url('posts/post')!!}" rel="tooltip" class="btn btn-white btn-round btn-simple btn-icon pull-right add-new" data-original-title="" title="">
+    <a href="{!!guard_url('postbuffer/post')!!}" rel="tooltip" class="btn btn-white btn-round btn-simple btn-icon pull-right add-new" data-original-title="" title="">
             <i class="fa fa-chevron-left"></i>
     </a>
 @stop
 
 @section('content') 
-    @include('posts::post.partial.entry', ['mode' => 'edit'])
+    @include('postbuffer::post.partial.entry', ['mode' => 'edit'])
 @stop
 
 @section('actions') 

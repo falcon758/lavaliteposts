@@ -1,12 +1,12 @@
 <?php
 
-namespace Posts\Posts\Http\Controllers;
+namespace Channels\Postbuffer\Http\Controllers;
 
 use App\Http\Controllers\APIController as BaseController;
-use Posts\Posts\Http\Requests\ChannelRequest;
-use Posts\Posts\Interfaces\ChannelRepositoryInterface;
-use Posts\Posts\Models\Channel;
-use Posts\Posts\Forms\Channel as Form;
+use Channels\Postbuffer\Http\Requests\ChannelRequest;
+use Channels\Postbuffer\Interfaces\ChannelRepositoryInterface;
+use Channels\Postbuffer\Models\Channel;
+use Channels\Postbuffer\Forms\Channel as Form;
 
 /**
  * APIController  class for channel.
@@ -27,7 +27,7 @@ class ChannelAPIController extends BaseController
         $this->repository = $channel;
         $this->repository
             ->pushCriteria(\Litepie\Repository\Criteria\RequestCriteria::class)
-            ->pushCriteria(\Posts\Posts\Repositories\Criteria\ChannelResourceCriteria::class);
+            ->pushCriteria(\Channels\Postbuffer\Repositories\Criteria\ChannelResourceCriteria::class);
     }
 
     /**
@@ -38,7 +38,7 @@ class ChannelAPIController extends BaseController
     public function index(ChannelRequest $request)
     {
         return $this->repository
-            ->setPresenter(\Posts\Posts\Repositories\Presenter\ChannelPresenter::class)
+            ->setPresenter(\Channels\Postbuffer\Repositories\Presenter\ChannelPresenter::class)
             ->paginate();
     }
 
@@ -52,7 +52,7 @@ class ChannelAPIController extends BaseController
      */
     public function show(ChannelRequest $request, Channel $channel)
     {
-        return $channel->setPresenter(\Posts\Posts\Repositories\Presenter\ChannelListPresenter::class);
+        return $channel->setPresenter(\Channels\Postbuffer\Repositories\Presenter\ChannelListPresenter::class);
         ;
     }
 
@@ -70,15 +70,15 @@ class ChannelAPIController extends BaseController
             $data['user_id']   = user_id();
             $data['user_type'] = user_type();
             $data              = $this->repository->create($data);
-            $message           = trans('messages.success.created', ['Module' => trans('posts::channel.name')]);
+            $message           = trans('messages.success.created', ['Module' => trans('postbuffer::channel.name')]);
             $code              = 204;
             $status            = 'success';
-            $url               = guard_url('posts/channel/' . $channel->getRouteKey());
+            $url               = guard_url('postbuffer/channel/' . $channel->getRouteKey());
         } catch (Exception $e) {
             $message = $e->getMessage();
             $code    = 400;
             $status  = 'error';
-            $url     = guard_url('posts/channel');
+            $url     = guard_url('postbuffer/channel');
         }
         return compact('data', 'message', 'code', 'status', 'url');
     }
@@ -97,15 +97,15 @@ class ChannelAPIController extends BaseController
             $data = $request->all();
 
             $channel->update($data);
-            $message = trans('messages.success.updated', ['Module' => trans('posts::channel.name')]);
+            $message = trans('messages.success.updated', ['Module' => trans('postbuffer::channel.name')]);
             $code    = 204;
             $status  = 'success';
-            $url     = guard_url('posts/channel/' . $channel->getRouteKey());
+            $url     = guard_url('postbuffer/channel/' . $channel->getRouteKey());
         } catch (Exception $e) {
             $message = $e->getMessage();
             $code    = 400;
             $status  = 'error';
-            $url     = guard_url('posts/channel/' . $channel->getRouteKey());
+            $url     = guard_url('postbuffer/channel/' . $channel->getRouteKey());
         }
         return compact('data', 'message', 'code', 'status', 'url');
     }
@@ -121,15 +121,15 @@ class ChannelAPIController extends BaseController
     {
         try {
             $channel->delete();
-            $message = trans('messages.success.deleted', ['Module' => trans('posts::channel.name')]);
+            $message = trans('messages.success.deleted', ['Module' => trans('postbuffer::channel.name')]);
             $code    = 202;
             $status  = 'success';
-            $url     = guard_url('posts/channel/0');
+            $url     = guard_url('postbuffer/channel/0');
         } catch (Exception $e) {
             $message = $e->getMessage();
             $code    = 400;
             $status  = 'error';
-            $url     = guard_url('posts/channel/' . $channel->getRouteKey());
+            $url     = guard_url('postbuffer/channel/' . $channel->getRouteKey());
         }
         return compact('message', 'code', 'status', 'url');
     }

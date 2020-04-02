@@ -1,8 +1,8 @@
 <?php
 
-namespace Posts\Posts\Workflow;
+namespace Channels\Postbuffer\Workflow;
 
-use Posts\Posts\Models\Post;
+use Channels\Postbuffer\Models\Post;
 use Validator;
 
 class PostValidator

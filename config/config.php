@@ -5,12 +5,12 @@ return [
     /**
      * Provider.
      */
-    'provider'  => 'posts',
+    'provider'  => 'channels',
 
     /*
      * Package.
      */
-    'package'   => 'posts',
+    'package'   => 'postbuffer',
 
     /*
      * Modules.
@@ -20,9 +20,9 @@ return [
 
     'post'       => [
         'model' => [
-            'model'                 => \Posts\Posts\Models\Post::class,
+            'model'                 => \Channels\Postbuffer\Models\Post::class,
             'table'                 => 'posts',
-            'presenter'             => \Posts\Posts\Repositories\Presenter\PostPresenter::class,
+            'presenter'             => \Channels\Postbuffer\Repositories\Presenter\PostPresenter::class,
             'hidden'                => [],
             'visible'               => [],
             'guarded'               => ['*'],
@@ -31,7 +31,7 @@ return [
             'appends'               => [],
             'fillable'              => ['id',  'name',  'slug',  'content',  'user_id',  'user_type',  'posts_id',  'deleted_at',  'created_at',  'updated_at'],
             'translatables'         => [],
-            'upload_folder'         => 'posts/post',
+            'upload_folder'         => 'postbuffer/post',
             'uploads'               => [
             /*
                     'images' => [
@@ -61,8 +61,8 @@ return [
         ],
 
         'controller' => [
-            'provider'  => 'Posts',
-            'package'   => 'Posts',
+            'provider'  => 'Channels',
+            'package'   => 'Postbuffer',
             'module'    => 'Post',
         ],
 
@@ -118,9 +118,9 @@ return [
 
     'channel'       => [
         'model' => [
-            'model'                 => \Posts\Posts\Models\Channel::class,
+            'model'                 => \Channels\Postbuffer\Models\Channel::class,
             'table'                 => 'channels',
-            'presenter'             => \Posts\Posts\Repositories\Presenter\ChannelPresenter::class,
+            'presenter'             => \Channels\Postbuffer\Repositories\Presenter\ChannelPresenter::class,
             'hidden'                => [],
             'visible'               => [],
             'guarded'               => ['*'],
@@ -129,7 +129,7 @@ return [
             'appends'               => [],
             'fillable'              => ['id',  'name',  'slug',  'status',  'user_id',  'user_type',  'deleted_at',  'created_at',  'updated_at'],
             'translatables'         => [],
-            'upload_folder'         => 'posts/channel',
+            'upload_folder'         => 'postbuffer/channel',
             'uploads'               => [
             /*
                     'images' => [
@@ -159,8 +159,8 @@ return [
         ],
 
         'controller' => [
-            'provider'  => 'Posts',
-            'package'   => 'Posts',
+            'provider'  => 'Channels',
+            'package'   => 'Postbuffer',
             'module'    => 'Channel',
         ],
 

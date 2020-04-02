@@ -1,8 +1,8 @@
 <?php
 
-namespace Posts\Posts\Repositories\Eloquent;
+namespace Channels\Postbuffer\Repositories\Eloquent;
 
-use Posts\Posts\Interfaces\PostRepositoryInterface;
+use Channels\Postbuffer\Interfaces\PostRepositoryInterface;
 use Litepie\Repository\Eloquent\BaseRepository;
 
 class PostRepository extends BaseRepository implements PostRepositoryInterface
@@ -11,7 +11,7 @@ class PostRepository extends BaseRepository implements PostRepositoryInterface
 
     public function boot()
     {
-        $this->fieldSearchable = config('posts.posts.post.model.search');
+        $this->fieldSearchable = config('channels.postbuffer.post.model.search');
 
     }
 
@@ -22,6 +22,6 @@ class PostRepository extends BaseRepository implements PostRepositoryInterface
      */
     public function model()
     {
-        return config('posts.posts.post.model.model');
+        return config('channels.postbuffer.post.model.model');
     }
 }

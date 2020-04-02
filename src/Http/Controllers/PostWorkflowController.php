@@ -1,10 +1,10 @@
 <?php
 
-namespace Posts\Posts\Http\Controllers;
+namespace Channels\Postbuffer\Http\Controllers;
 
 use App\Http\Controllers\Controller as BaseController;
-use Posts\Posts\Http\Requests\PostRequest;
-use Posts\Posts\Models\Post;
+use Channels\Postbuffer\Http\Requests\PostRequest;
+use Channels\Postbuffer\Models\Post;
 
 /**
  * Admin web controller class.
@@ -29,7 +29,7 @@ class PostWorkflowController extends BaseController
             $post->updateWorkflow($step);
 
             return response()->json([
-                'message'  => trans('messages.success.changed', ['Module' => trans('posts::post.name'), 'status' => trans("app.{$step}")]),
+                'message'  => trans('messages.success.changed', ['Module' => trans('postbuffer::post.name'), 'status' => trans("app.{$step}")]),
                 'code'     => 204,
                 'redirect' => trans_url('/admin/post/post/' . $post->getRouteKey()),
             ], 201);
@@ -66,12 +66,12 @@ class PostWorkflowController extends BaseController
             $post->updateWorkflow($step);
 
             $data = [
-                'message' => trans('messages.success.changed', ['Module' => trans('posts::post.name'), 'status' => trans("app.{$step}")]),
+                'message' => trans('messages.success.changed', ['Module' => trans('postbuffer::post.name'), 'status' => trans("app.{$step}")]),
                 'status'  => 'success',
                 'step'    => trans("app.{$step}"),
             ];
 
-            return $this->theme->layout('blank')->of('posts::admin.post.message', $data)->render();
+            return $this->theme->layout('blank')->of('postbuffer::admin.post.message', $data)->render();
 
         } catch (ValidationException $e) {
 
@@ -81,7 +81,7 @@ class PostWorkflowController extends BaseController
                 'step'    => trans("app.{$step}"),
             ];
 
-            return $this->theme->layout('blank')->of('posts::admin.post.message', $data)->render();
+            return $this->theme->layout('blank')->of('postbuffer::admin.post.message', $data)->render();
 
         } catch (Exception $e) {
 
@@ -91,7 +91,7 @@ class PostWorkflowController extends BaseController
                 'step'    => trans("app.{$step}"),
             ];
 
-            return $this->theme->layout('blank')->of('posts::admin.post.message', $data)->render();
+            return $this->theme->layout('blank')->of('postbuffer::admin.post.message', $data)->render();
 
         }
 

@@ -3,10 +3,10 @@
 return [
     /*
     |--------------------------------------------------------------------------
-    | Language files for post in posts package
+    | Language files for post in postbuffer package
     |--------------------------------------------------------------------------
     |
-    | The following language lines are  for  post module in posts package
+    | The following language lines are  for  post module in postbuffer package
     | and it is used by the template/view files in this module
     |
     */

@@ -1,12 +1,12 @@
 <?php
 
-namespace Posts\Posts\Notifications;
+namespace Channels\Postbuffer\Notifications;
 
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Notifications\Notification;
-use Posts\Posts\Models\Channel as ChannelModel;
+use Channels\Postbuffer\Models\Channel as ChannelModel;
 
 class ChannelWorkflow extends Notification implements ShouldQueue
 {

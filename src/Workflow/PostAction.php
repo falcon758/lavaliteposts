@@ -1,11 +1,11 @@
 <?php
 
-namespace Posts\Posts\Workflow;
+namespace Channels\Postbuffer\Workflow;
 
 use Exception;
 use Litepie\Workflow\Exceptions\WorkflowActionNotPerformedException;
 
-use Posts\Posts\Models\Post;
+use Channels\Postbuffer\Models\Post;
 
 class PostAction
 {

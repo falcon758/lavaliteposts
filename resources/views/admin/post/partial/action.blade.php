@@ -12,36 +12,36 @@
                             <li class="divider"></li>
 
                             <li><a class="action-modal" style="cursor:pointer;" data-toggle="modal" 
-                            data-title='Add Task'  data-url="{{guard_url('posts/post/action/task/'.$post->getRouteKey())}}" data-target="#action-modal"><i class="fa fa-fw fa-tasks" aria-hidden="true"></i> Add Task</a></li>
+                            data-title='Add Task'  data-url="{{guard_url('postbuffer/post/action/task/'.$post->getRouteKey())}}" data-target="#action-modal"><i class="fa fa-fw fa-tasks" aria-hidden="true"></i> Add Task</a></li>
 
                             <li><a class="action-modal" style="cursor:pointer;" data-toggle="modal" 
-                            data-title='Add Calendar'  data-url="{{guard_url('posts/post/action/calendar/'.$post->getRouteKey())}}" data-target="#action-modal"><i class="fa fa-fw fa-calendar" aria-hidden="true"></i> Add Calendar</a></li>
+                            data-title='Add Calendar'  data-url="{{guard_url('postbuffer/post/action/calendar/'.$post->getRouteKey())}}" data-target="#action-modal"><i class="fa fa-fw fa-calendar" aria-hidden="true"></i> Add Calendar</a></li>
                             <li class="divider"></li>
 
-                            <li><a class="action-link" style="cursor:pointer;" data-url="{{guard_url('posts/post/action/print/'.$post->getRouteKey())}}"><i class="fa fa-fw fa-print" aria-hidden="true"></i> Print</a></li>
+                            <li><a class="action-link" style="cursor:pointer;" data-url="{{guard_url('postbuffer/post/action/print/'.$post->getRouteKey())}}"><i class="fa fa-fw fa-print" aria-hidden="true"></i> Print</a></li>
 
-                            <li><a class="action-link" style="cursor:pointer;" data-url="{{guard_url('posts/post/action/pdf/'.$post->getRouteKey())}}"><i class="fa fa-fw fa-file-pdf-o" aria-hidden="true"></i> Download PDF</a></li>
+                            <li><a class="action-link" style="cursor:pointer;" data-url="{{guard_url('postbuffer/post/action/pdf/'.$post->getRouteKey())}}"><i class="fa fa-fw fa-file-pdf-o" aria-hidden="true"></i> Download PDF</a></li>
 
-                            <li><a class="action-link" style="cursor:pointer;" data-url="{{guard_url('posts/post/action/excel/'.$post->getRouteKey())}}"><i class="fa fa-fw fa-file-excel-o" aria-hidden="true"></i> Download Excel</a></li>
+                            <li><a class="action-link" style="cursor:pointer;" data-url="{{guard_url('postbuffer/post/action/excel/'.$post->getRouteKey())}}"><i class="fa fa-fw fa-file-excel-o" aria-hidden="true"></i> Download Excel</a></li>
                             <li class="divider"></li>
 
                             <li><a class="action-modal" style="cursor:pointer;" data-toggle="modal" 
-                            data-title='Send mail to contact' data-url="{{guard_url('posts/post/action/mail/'.$post->getRouteKey())}}" data-target="#action-modal"><i class="fa fa-fw fa-envelope-o" aria-hidden="true"></i> Send Mail</a></li>
+                            data-title='Send mail to contact' data-url="{{guard_url('postbuffer/post/action/mail/'.$post->getRouteKey())}}" data-target="#action-modal"><i class="fa fa-fw fa-envelope-o" aria-hidden="true"></i> Send Mail</a></li>
 
                             <li><a class="action-modal" style="cursor:pointer;" data-toggle="modal" 
-                            data-title='Send SMS to contact' data-url="{{guard_url('posts/post/action/sms/'.$post->getRouteKey())}}" data-target="#action-modal"><i class="fa fa-fw fa-comment-o" aria-hidden="true"></i> Send SMS</a></li>
+                            data-title='Send SMS to contact' data-url="{{guard_url('postbuffer/post/action/sms/'.$post->getRouteKey())}}" data-target="#action-modal"><i class="fa fa-fw fa-comment-o" aria-hidden="true"></i> Send SMS</a></li>
                             <li class="divider"></li>
 
-                            <li><a class="action-clone" style="cursor:pointer;" data-method="GET" data-title="Clone" data-text="Do you want to duplicate this data?" data-url="{{guard_url('posts/post/action/copy/'.$post->getRouteKey())}}"><i class="fa fa-fw fa-clone" aria-hidden="true"></i> Clone</a></li>
+                            <li><a class="action-clone" style="cursor:pointer;" data-method="GET" data-title="Clone" data-text="Do you want to duplicate this data?" data-url="{{guard_url('postbuffer/post/action/copy/'.$post->getRouteKey())}}"><i class="fa fa-fw fa-clone" aria-hidden="true"></i> Clone</a></li>
 
-                            <li><a class="action-method" data-method="POST" data-title="Archive" data-text="Do you want to change the status of this data?" data-url="{{guard_url('posts/post/action/status/archive/'.$post->getRouteKey())}}" style="cursor:pointer;"><i class="fa fa-fw fa-archive" aria-hidden="true"></i> Archive</a></li>
+                            <li><a class="action-method" data-method="POST" data-title="Archive" data-text="Do you want to change the status of this data?" data-url="{{guard_url('postbuffer/post/action/status/archive/'.$post->getRouteKey())}}" style="cursor:pointer;"><i class="fa fa-fw fa-archive" aria-hidden="true"></i> Archive</a></li>
 
                         </ul>
                     </div>
-                    <button type="button" class="btn btn-success btn-sm" data-action='NEW' data-load-to='#posts-post-entry' data-href="{{guard_url('posts/post/create')}}"><i class="fa fa-plus-circle"></i> {{ trans('app.new') }}</button>
+                    <button type="button" class="btn btn-success btn-sm" data-action='NEW' data-load-to='#postbuffer-post-entry' data-href="{{guard_url('postbuffer/post/create')}}"><i class="fa fa-plus-circle"></i> {{ trans('app.new') }}</button>
                     @if($post->id )
-                    <button type="button" class="btn btn-primary btn-sm" data-action="EDIT" data-load-to='#posts-post-entry' data-href="{{guard_url('posts/post') }}/{{$post->getRouteKey()}}/edit"><i class="fa fa-pencil-square"></i> {{ trans('app.edit') }}</button>
-                    <button type="button" class="btn btn-danger btn-sm" data-action="DELETE" data-load-to='#posts-post-entry' data-datatable='#posts-post-list' data-href="{{guard_url('posts/post') }}/{{$post->getRouteKey()}}" >
+                    <button type="button" class="btn btn-primary btn-sm" data-action="EDIT" data-load-to='#postbuffer-post-entry' data-href="{{guard_url('postbuffer/post') }}/{{$post->getRouteKey()}}/edit"><i class="fa fa-pencil-square"></i> {{ trans('app.edit') }}</button>
+                    <button type="button" class="btn btn-danger btn-sm" data-action="DELETE" data-load-to='#postbuffer-post-entry' data-datatable='#postbuffer-post-list' data-href="{{guard_url('postbuffer/post') }}/{{$post->getRouteKey()}}" >
                     <i class="fa fa-times-circle"></i> {{ trans('app.delete') }}
                     </button>
                     @endif
@@ -96,7 +96,7 @@ $( document ).ajaxComplete(function() {
                 success:function(data, textStatus, jqXHR)
                 {
                     swal("Copied!", 'Save the data after updation', "success");
-                    $('#posts-post-entry').html(data);
+                    $('#postbuffer-post-entry').html(data);
                 }
             });
         });      
@@ -132,7 +132,7 @@ $( document ).ajaxComplete(function() {
                     success:function(data, textStatus, jqXHR)
                     {
                         swal(data.caption+"!", data.message, "success");
-                        $('#posts-post-list').DataTable().ajax.reload( null, false );
+                        $('#postbuffer-post-list').DataTable().ajax.reload( null, false );
                         arrayids = [];
                     },
                     error:function(data, textStatus, jqXHR)

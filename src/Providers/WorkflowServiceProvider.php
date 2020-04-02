@@ -1,6 +1,6 @@
 <?php
 
-namespace Posts\Posts\Providers;
+namespace Channels\Postbuffer\Providers;
 
 use Litepie\Contracts\Workflow\Workflow as WorkflowContract;
 use Litepie\Foundation\Support\Providers\WorkflowServiceProvider as ServiceProvider;
@@ -14,10 +14,10 @@ class WorkflowServiceProvider extends ServiceProvider
      */
     protected $validators = [
         // Bind Post workflow validator
-        'Posts\Posts\Models\Post' => \Posts\Posts\Workflow\PostValidator::class,
+        'Channels\Postbuffer\Models\Post' => \Channels\Postbuffer\Workflow\PostValidator::class,
 
         // Bind Channel workflow validator
-        'Posts\Posts\Models\Channel' => \Posts\Posts\Workflow\ChannelValidator::class,
+        'Channels\Postbuffer\Models\Channel' => \Channels\Postbuffer\Workflow\ChannelValidator::class,
     ];
 
     /**
@@ -27,10 +27,10 @@ class WorkflowServiceProvider extends ServiceProvider
      */
     protected $actions = [
         // Bind Post workflow actions
-        'Posts\Posts\Models\Post' => \Posts\Posts\Workflow\PostAction::class,
+        'Channels\Postbuffer\Models\Post' => \Channels\Postbuffer\Workflow\PostAction::class,
 
         // Bind Channel workflow actions
-        'Posts\Posts\Models\Channel' => \Posts\Posts\Workflow\ChannelAction::class,
+        'Channels\Postbuffer\Models\Channel' => \Channels\Postbuffer\Workflow\ChannelAction::class,
     ];
 
     /**
@@ -40,10 +40,10 @@ class WorkflowServiceProvider extends ServiceProvider
      */
     protected $notifiers = [
        // Bind Post workflow notifiers
-        'Posts\Posts\Models\Post' => \Posts\Posts\Workflow\PostNotifier::class,
+        'Channels\Postbuffer\Models\Post' => \Channels\Postbuffer\Workflow\PostNotifier::class,
 
         // Bind Channel workflow notifiers
-        'Posts\Posts\Models\Channel' => \Posts\Posts\Workflow\ChannelNotifier::class,
+        'Channels\Postbuffer\Models\Channel' => \Channels\Postbuffer\Workflow\ChannelNotifier::class,
     ];
 
     /**

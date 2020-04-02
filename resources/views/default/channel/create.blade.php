@@ -1,6 +1,6 @@
 @extends('resource.create')
 @php
-$links['back'] = guard_url('posts/channel');
+$links['back'] = guard_url('postbuffer/channel');
 $links['form'] = $links['back'];
 @endphp
 
@@ -9,27 +9,27 @@ $links['form'] = $links['back'];
 @stop
 
 @section('title') 
-{!! __('posts::channel.title.main') !!}
+{!! __('postbuffer::channel.title.main') !!}
 @stop
 
 @section('sub.title') 
-{!! __('posts::channel.title.create') !!}
+{!! __('postbuffer::channel.title.create') !!}
 @stop
 
 @section('breadcrumb') 
   <li><a href="{!!guard_url('/')!!}">{{ __('app.home') }}</a></li>
-  <li><a href="{!!guard_url('posts/channel')!!}">{!! __('posts::channel.name') !!}</a></li>
+  <li><a href="{!!guard_url('postbuffer/channel')!!}">{!! __('postbuffer::channel.name') !!}</a></li>
   <li>Create</li>
 @stop
 
 @section('tools') 
-    <a href="{!!guard_url('posts/channel')!!}" rel="tooltip" class="btn btn-white btn-round btn-simple btn-icon pull-right add-new" data-original-title="" title="">
+    <a href="{!!guard_url('postbuffer/channel')!!}" rel="tooltip" class="btn btn-white btn-round btn-simple btn-icon pull-right add-new" data-original-title="" title="">
             <i class="fa fa-chevron-left"></i>
     </a>
 @stop
 
 @section('content') 
-    @include('posts::channel.partial.entry', ['mode' => 'create'])
+    @include('postbuffer::channel.partial.entry', ['mode' => 'create'])
 @stop
 
 @section('actions') 

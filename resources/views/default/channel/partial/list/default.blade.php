@@ -16,9 +16,9 @@
                                         <p>{!! $channel->details !!}</p>
                                         <div class="actions">
 
-                                            <a href="{!! guard_url('posts/channel') !!}/{!! $channel->getRouteKey() !!}/edit" class="text-primary" data-toggle="tooltip" data-placement="left" title="Edit" data-action="EDIT" ><i class="icon-pencil"></i></a>
+                                            <a href="{!! guard_url('postbuffer/channel') !!}/{!! $channel->getRouteKey() !!}/edit" class="text-primary" data-toggle="tooltip" data-placement="left" title="Edit" data-action="EDIT" ><i class="icon-pencil"></i></a>
 
-                                            <a href="{!! guard_url('posts/channel') !!}/{!! $channel->getRouteKey() !!}" class="text-danger" data-toggle="tooltip" data-placement="left" title="Delete" data-action="DELETE" data-remove="{!! $channel->getRouteKey() !!}"><i class="icon-trash"></i></a>
+                                            <a href="{!! guard_url('postbuffer/channel') !!}/{!! $channel->getRouteKey() !!}" class="text-danger" data-toggle="tooltip" data-placement="left" title="Delete" data-action="DELETE" data-remove="{!! $channel->getRouteKey() !!}"><i class="icon-trash"></i></a>
 
                                         </div>
                                     </div>

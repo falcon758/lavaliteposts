@@ -1,12 +1,12 @@
 <?php
 
-namespace Posts\Posts\Http\Controllers;
+namespace Channels\Postbuffer\Http\Controllers;
 
 use App\Http\Controllers\APIController as BaseController;
-use Posts\Posts\Http\Requests\PostRequest;
-use Posts\Posts\Interfaces\PostRepositoryInterface;
-use Posts\Posts\Models\Post;
-use Posts\Posts\Forms\Post as Form;
+use Channels\Postbuffer\Http\Requests\PostRequest;
+use Channels\Postbuffer\Interfaces\PostRepositoryInterface;
+use Channels\Postbuffer\Models\Post;
+use Channels\Postbuffer\Forms\Post as Form;
 
 /**
  * APIController  class for post.
@@ -27,7 +27,7 @@ class PostAPIController extends BaseController
         $this->repository = $post;
         $this->repository
             ->pushCriteria(\Litepie\Repository\Criteria\RequestCriteria::class)
-            ->pushCriteria(\Posts\Posts\Repositories\Criteria\PostResourceCriteria::class);
+            ->pushCriteria(\Channels\Postbuffer\Repositories\Criteria\PostResourceCriteria::class);
     }
 
     /**
@@ -38,7 +38,7 @@ class PostAPIController extends BaseController
     public function index(PostRequest $request)
     {
         return $this->repository
-            ->setPresenter(\Posts\Posts\Repositories\Presenter\PostPresenter::class)
+            ->setPresenter(\Channels\Postbuffer\Repositories\Presenter\PostPresenter::class)
             ->paginate();
     }
 
@@ -52,7 +52,7 @@ class PostAPIController extends BaseController
      */
     public function show(PostRequest $request, Post $post)
     {
-        return $post->setPresenter(\Posts\Posts\Repositories\Presenter\PostListPresenter::class);
+        return $post->setPresenter(\Channels\Postbuffer\Repositories\Presenter\PostListPresenter::class);
         ;
     }
 
@@ -70,15 +70,15 @@ class PostAPIController extends BaseController
             $data['user_id']   = user_id();
             $data['user_type'] = user_type();
             $data              = $this->repository->create($data);
-            $message           = trans('messages.success.created', ['Module' => trans('posts::post.name')]);
+            $message           = trans('messages.success.created', ['Module' => trans('postbuffer::post.name')]);
             $code              = 204;
             $status            = 'success';
-            $url               = guard_url('posts/post/' . $post->getRouteKey());
+            $url               = guard_url('postbuffer/post/' . $post->getRouteKey());
         } catch (Exception $e) {
             $message = $e->getMessage();
             $code    = 400;
             $status  = 'error';
-            $url     = guard_url('posts/post');
+            $url     = guard_url('postbuffer/post');
         }
         return compact('data', 'message', 'code', 'status', 'url');
     }
@@ -97,15 +97,15 @@ class PostAPIController extends BaseController
             $data = $request->all();
 
             $post->update($data);
-            $message = trans('messages.success.updated', ['Module' => trans('posts::post.name')]);
+            $message = trans('messages.success.updated', ['Module' => trans('postbuffer::post.name')]);
             $code    = 204;
             $status  = 'success';
-            $url     = guard_url('posts/post/' . $post->getRouteKey());
+            $url     = guard_url('postbuffer/post/' . $post->getRouteKey());
         } catch (Exception $e) {
             $message = $e->getMessage();
             $code    = 400;
             $status  = 'error';
-            $url     = guard_url('posts/post/' . $post->getRouteKey());
+            $url     = guard_url('postbuffer/post/' . $post->getRouteKey());
         }
         return compact('data', 'message', 'code', 'status', 'url');
     }
@@ -121,15 +121,15 @@ class PostAPIController extends BaseController
     {
         try {
             $post->delete();
-            $message = trans('messages.success.deleted', ['Module' => trans('posts::post.name')]);
+            $message = trans('messages.success.deleted', ['Module' => trans('postbuffer::post.name')]);
             $code    = 202;
             $status  = 'success';
-            $url     = guard_url('posts/post/0');
+            $url     = guard_url('postbuffer/post/0');
         } catch (Exception $e) {
             $message = $e->getMessage();
             $code    = 400;
             $status  = 'error';
-            $url     = guard_url('posts/post/' . $post->getRouteKey());
+            $url     = guard_url('postbuffer/post/' . $post->getRouteKey());
         }
         return compact('message', 'code', 'status', 'url');
     }

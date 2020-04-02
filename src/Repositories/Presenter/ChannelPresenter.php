@@ -1,6 +1,6 @@
 <?php
 
-namespace Posts\Posts\Repositories\Presenter;
+namespace Channels\Postbuffer\Repositories\Presenter;
 
 use Litepie\Repository\Presenter\FractalPresenter;
 

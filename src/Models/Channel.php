@@ -1,6 +1,6 @@
 <?php
 
-namespace Posts\Posts\Models;
+namespace Channels\Postbuffer\Models;
 
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Litepie\Database\Model;
@@ -19,7 +19,7 @@ class Channel extends Model
      *
      * @var array
      */
-     protected $config = 'posts.posts.channel.model';
+     protected $config = 'channels.postbuffer.channel.model';
 
 
 }

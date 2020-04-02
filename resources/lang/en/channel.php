@@ -3,10 +3,10 @@
 return [
     /*
     |--------------------------------------------------------------------------
-    | Language files for channel in posts package
+    | Language files for channel in postbuffer package
     |--------------------------------------------------------------------------
     |
-    | The following language lines are  for  channel module in posts package
+    | The following language lines are  for  channel module in postbuffer package
     | and it is used by the template/view files in this module
     |
     */

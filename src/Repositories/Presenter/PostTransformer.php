@@ -1,13 +1,13 @@
 <?php
 
-namespace Posts\Posts\Repositories\Presenter;
+namespace Channels\Postbuffer\Repositories\Presenter;
 
 use League\Fractal\TransformerAbstract;
 use Hashids;
 
 class PostTransformer extends TransformerAbstract
 {
-    public function transform(\Posts\Posts\Models\Post $post)
+    public function transform(\Channels\Postbuffer\Models\Post $post)
     {
         return [
             'id'                => $post->getRouteKey(),
@@ -26,8 +26,8 @@ class PostTransformer extends TransformerAbstract
             'created_at'        => $post->created_at,
             'updated_at'        => $post->updated_at,
             'url'               => [
-                'public'    => trans_url('posts/'.$post->getPublicKey()),
-                'user'      => guard_url('posts/post/'.$post->getRouteKey()),
+                'public'    => trans_url('postbuffer/'.$post->getPublicKey()),
+                'user'      => guard_url('postbuffer/post/'.$post->getRouteKey()),
             ], 
             'status'            => trans('app.'.$post->status),
             'created_at'        => format_date($post->created_at),

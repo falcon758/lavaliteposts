@@ -4,14 +4,14 @@ return [
 
     /*
     |--------------------------------------------------------------------------
-    | Label language files for Posts package
+    | Label language files for Postbuffer package
     |--------------------------------------------------------------------------
     |
-    | The following language lines are the default labels for posts module,
+    | The following language lines are the default labels for postbuffer module,
     | and it is used by the template/view files in this module
     |
     */
 
-    'name'          => 'Posts',
-    'names'         => 'Posts',
+    'name'          => 'Postbuffer',
+    'names'         => 'Postbuffers',
 ];
