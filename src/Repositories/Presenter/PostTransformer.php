@@ -15,7 +15,6 @@ class PostTransformer extends TransformerAbstract
                 'public'    => $post->getPublicKey(),
                 'route'     => $post->getRouteKey(),
             ], 
-            'id'                => $post->id,
             'name'              => $post->name,
             'slug'              => $post->slug,
             'content'           => $post->content,
