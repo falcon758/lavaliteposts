@@ -15,7 +15,6 @@ class ChannelTransformer extends TransformerAbstract
                 'public'    => $channel->getPublicKey(),
                 'route'     => $channel->getRouteKey(),
             ], 
-            'id'                => $channel->id,
             'name'              => $channel->name,
             'slug'              => $channel->slug,
             'status'            => $channel->status,
