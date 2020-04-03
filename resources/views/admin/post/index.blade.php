@@ -35,8 +35,7 @@
                     <thead class="list_head">
                         <th style="text-align: right;" width="1%"><a class="btn-reset-filter" href="#Reset" style="display:none; color:#fff;"><i class="fa fa-filter"></i></a> <input type="checkbox" id="channels-post-check-all"></th>
                         <th data-field="name">{!! trans('channels::post.label.name')!!}</th>
-                    <th data-field="content">{!! trans('channels::post.label.content')!!}</th>
-                    <th data-field="posts_id">{!! trans('channels::post.label.posts_id')!!}</th>
+                        <th data-field="content">{!! trans('channels::post.label.content')!!}</th>
                     </thead>
                 </table>
             </div>
@@ -86,7 +85,6 @@ $(document).ready(function(){
             {data :'id'},
             {data :'name'},
             {data :'content'},
-            {data :'posts_id'},
         ],
         "pageLength": 25
     });
